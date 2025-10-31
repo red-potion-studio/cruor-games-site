@@ -1,0 +1,186 @@
+/* v1.0 2025-10-29T23:40:00Z */
+/* ========== VARIABLES ========== */
+:root {
+  --bordeaux: #33030C;
+  --gold: #c7ab6d;
+  --white: #f5f5f5;
+  --black: #0a0a0a;
+  --gray: #888;
+}
+
+/* ========== LAYOUT BASE ========== */
+body.content-page {
+  background: linear-gradient(to bottom, #000 0%, #33030C 100%);
+  color: var(--white);
+  font-family: "Inter", system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+.content-article {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: rgba(0,0,0,0.65);
+  border: 1px solid var(--bordeaux);
+  border-radius: 6px;
+  box-shadow: 0 0 40px rgba(51,3,12,0.4);
+}
+
+/* ========== HEADINGS ========== */
+.content-article h2,
+.content-article h3,
+.content-article h4 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: var(--gold);
+  margin-top: 1.5rem;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.content-article h2 {
+  font-size: 2rem;
+  border-bottom: 1px solid var(--bordeaux);
+  padding-bottom: 0.4rem;
+}
+
+.intro {
+  color: var(--gray);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+/* ========== IMAGES ========== */
+.content-hero {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--bordeaux);
+  border-radius: 4px;
+  margin-bottom: 1.2rem;
+}
+
+/* ========== PLOT TABLE ========== */
+.plot-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.plot-table th {
+  background: var(--bordeaux);
+  color: var(--gold);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid #1a0105;
+}
+
+.plot-table td {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--bordeaux);
+  background: rgba(255,255,255,0.03);
+}
+
+/* ========== STORY TEXT ========== */
+.story-section p,
+.content-body p {
+  margin-bottom: 1rem;
+}
+
+blockquote {
+  border-left: 3px solid var(--gold);
+  padding-left: 1rem;
+  color: #ddd;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* ========== ACTS & CLOCKS ========== */
+.act {
+  margin: 2.5rem 0;
+  border-top: 1px solid var(--bordeaux);
+  padding-top: 1.5rem;
+}
+
+.clock {
+  margin-top: 1rem;
+}
+
+.clock h4 {
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.clock-entry {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.clock-text h4 {
+  margin: 0;
+  color: var(--bordeaux);
+}
+
+.clock-text p {
+  margin: 0.3rem 0 0;
+  line-height: 1.4;
+  color: var(--white);
+}
+
+svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ========== MODES (Hard / Brutal) ========== */
+.modes {
+  background: rgba(51,3,12,0.3);
+  border: 1px solid var(--bordeaux);
+  border-radius: 4px;
+  padding: 0.8rem 1rem;
+  margin-top: 1rem;
+}
+.modes p {
+  margin: 0.3rem 0;
+}
+.modes strong {
+  color: var(--gold);
+}
+
+/* ========== ENDING SECTION ========== */
+.ending {
+  border-top: 1px solid var(--bordeaux);
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+}
+.ending p {
+  font-style: italic;
+  color: var(--gray);
+}
+
+/* ========== TAGS & META ========== */
+.tags {
+  margin-top: 2rem;
+}
+.tag {
+  display: inline-block;
+  background: var(--bordeaux);
+  color: var(--gold);
+  border-radius: 2px;
+  padding: 0.2rem 0.5rem;
+  margin-right: 0.4rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.meta {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--gray);
+  text-align: right;
+}

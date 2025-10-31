@@ -1,0 +1,59 @@
+<!-- v1.3 2025-10-29T12:05:00Z -->
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cruor Games — Dark Fantasy Homebrew</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- Banner composto -->
+  <section class="banner">
+    <div class="banner-overlay">
+      <img class="banner-logo" src="assets/images/banners/logo.png" alt="Cruor Games Logo">
+      <div class="banner-text-wrap">
+      <picture>
+        <source media="(min-width: 768px)" srcset="assets/images/banners/text-h.png">
+        <img src="assets/images/banners/text-v.svg" alt="Cruor Games Text" class="banner-text">
+      </picture>
+      </div>
+    </div>
+  </section>
+
+<section class="slider">
+  <div class="slider-track"></div>
+  <button class="slider-btn prev" aria-label="Previous slide">❮</button>
+  <button class="slider-btn next" aria-label="Next slide">❯</button>
+  <div class="slider-dots"></div>
+</section>
+
+  <section class="about">
+    <h3>About Us</h3>
+    <p><b>Cruor Games</b> promotes, writes, and distributes material for role-playing games with dark and controversial themes.</p>
+<p>Our goal is to provide high-quality content for players who prefer mature narratives with dark atmospheres, exploring the myriad possibilities of stories where character morality is ambiguous and the line between right and wrong is extremely fragile. While we strongly condemn any form of physical, verbal, and psychological violence, we believe that including these elements is crucial for the success of our works that focus on exploring the vilest aspects of the human soul. We believe that understanding wickedness is the first fundamental step to dismantling it and that the immersion offered by role-playing games is key to achieving this purpose.</p>
+<p>Creating an imaginary alter ego in a fictional reality, where every event remains confined to fantasy, provides an unparalleled means for players to confront moral dilemmas they would never encounter in everyday life. It allows them to experience new sensations and thoughts, even embracing worldviews diametrically opposed to their own. With Cruor Games, we aim to harness the full potential of role-playing games, focusing on aspects that maximize immersion. We believe that dark fantasy and gothic settings provide the perfect foundation for creating stimulating scenarios and challenging situations that prompt players to reflect on complex concepts such as hatred and love, spirituality and carnality, suffering and pleasure.</p>
+<p>If you too desire to delve into evil and all its facets, you are welcome to our world of blood, darkness, and damnation.</p>
+  </section>
+
+  <section class="auth">
+    <h3>Access the Archives</h3>
+    <p>Some contents are free to explore. Others require authentication through Patreon.</p>
+    <button onclick="loginPatreon()">Login with Patreon</button>
+  </section>
+
+  <footer>© 2025 Cruor Games. All rights reserved.</footer>
+
+  <script>
+    function loginPatreon() {
+      window.location.href = "https://www.patreon.com/oauth2/authorize";
+    }
+  </script>
+
+  <script src="scripts/slider.js"></script>
+</body>
+
+</html>

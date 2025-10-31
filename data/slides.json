@@ -1,0 +1,23 @@
+[
+  {
+    "image": "assets/images/slides/ossuary.webp",
+    "title": "Ossuary",
+    "subtitle": "Dark Places",
+    "body": "Investigate the dark heart of Roselake, where witch hunts hide older horrors. Unravel superstition and blood-bound pacts.",
+    "link": "content/test.html"
+  },
+  {
+    "image": "assets/images/slides/mutant.webp",
+    "title": "Mutant",
+    "subtitle": "Background + Feats",
+    "body": "Are you willing to let your body twist and contort grotesquely forever in exchange for new powers?",
+    "link": "content/test.html"
+  },
+  {
+    "image": "assets/images/slides/crucifixion.webp",
+    "title": "Crucifixion",
+    "subtitle": "Horrifying Magic",
+    "body": "Seasonal one-shots drenched in black humor and bone dust. Gather your players around the last light of winter.",
+    "link": "content/test.html"
+  }
+]

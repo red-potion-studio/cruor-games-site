@@ -1,0 +1,80 @@
+{
+  "categories": [
+    {
+      "id": "dangerous-hazards",
+      "name": "Dangerous Hazards",
+      "icon": "assets/icons/categories/dangerous-hazards.svg",
+      "description": "Environmental dangers and traps to inflict terrible wounds on your player characters."
+    },
+    {
+      "id": "dark-places",
+      "name": "Dark Places",
+      "icon": "assets/icons/categories/dark-places.svg",
+      "description": "Dungeon layouts with their curios, treasures, encounters, hazards, and battlemaps, to set up the right location for your horror scenes and fights."
+    },
+    {
+      "id": "frightful-stories",
+      "name": "Frightful Stories",
+      "icon": "assets/icons/categories/frightful-stories.svg",
+      "description": "Plot hooks and their related short adventures that you can use to make your players experience tragic and shocking events."
+    },
+    {
+      "id": "gruesome-features",
+      "name": "Gruesome Features",
+      "icon": "assets/icons/categories/gruesome-features.svg",
+      "description": "Backgrounds, classes, subclasses, races, subraces, and feats to build malevolent and mischievous characters."
+    },
+    {
+      "id": "horrifying-spells",
+      "name": "Horrifying Spells",
+      "icon": "assets/icons/categories/horrifying-spells.svg",
+      "description": "New dark spells to add to your occult collection and optional rules designed to make 5e magic system more gruesome."
+    },
+    {
+      "id": "malicious-items",
+      "name": "Malicious Items",
+      "icon": "assets/icons/categories/malicious-items.svg",
+      "description": "Mundane and magic items that hide dark secrets or twisted powers, including specific optional rules designed to better incorporate them into your game."
+    },
+    {
+      "id": "tenebrous-thoughts",
+      "name": "Tenebrous Thoughts",
+      "icon": "assets/icons/categories/tenebrous-thoughts.svg",
+      "description": "Inspirational facts and images to fuel your imagination and help you visualize new horrid concepts for your game."
+    },
+    {
+      "id": "terrifying-monsters",
+      "name": "Terrifying Monsters",
+      "icon": "assets/icons/categories/terrifying-monsters.svg",
+      "description": "Monsters with their loot tables, variants, affixes, descriptions, and weak spots, that you can use to terrify your players at the table."
+    },
+    {
+      "id": "twisted-characters",
+      "name": "Twisted Characters",
+      "icon": "assets/icons/categories/twisted-characters.svg",
+      "description": "NPCs with their biographies, personality traits, appearances, and roleplaying tips to help you populate your games with memorable villains and antiheroes."
+    }
+  ],
+  "contents": [
+    {
+      "id": "pit-of-needles",
+      "title": "Pit of Needles",
+      "category": "dangerous-hazards",
+      "excerpt": "A spiked pit that feeds on blood and screams.",
+      "image": "assets/images/library/pit-of-needles.webp",
+      "linkFree": "content/pit-of-needles-free.html",
+      "linkPremium": "content/pit-of-needles-premium.html",
+      "premium": true
+    },
+    {
+      "id": "roselake-catacombs",
+      "title": "The Catacombs Beneath Roselake",
+      "category": "dark-places",
+      "excerpt": "Flooded crypts echoing with restless prayers.",
+      "image": "assets/images/library/roselake-catacombs.webp",
+      "linkFree": "content/roselake-catacombs-free.html",
+      "linkPremium": "content/roselake-catacombs-premium.html",
+      "premium": true
+    }
+  ]
+}

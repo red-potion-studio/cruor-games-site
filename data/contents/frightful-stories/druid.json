@@ -1,0 +1,100 @@
+{
+  "id": "druid",
+  "title": "Druid",
+  "type": "frightful-story",
+  "image": "assets/images/library/druid.webp",
+  "intro": "A healer’s faith twisted into something rooted and wrong.",
+  "plot": {
+    "duration": "Short (6–12 hours)",
+    "difficulty": "Hard",
+    "type": "Investigation, Boss Fight",
+    "biome": "Wilderness",
+    "introduction": "The druid laid languidly in bed as a crowd of friends and family gathered around him: the illness afflicting him, contracted while he was outside the village, was the strangest the healers had ever seen."
+  },
+  "story": [
+    {
+      "html": "<p>The exhausted adventurers, worn from recent battles, tread heavily through the dense forest, as rain soaks their clothes and turns the ground beneath them into a hungry sludge. About halfway between the entrance and the exit of the forest, they notice something unusual: a short distance away, a man sits on the ground with his back against a tree trunk, writhing in terrible spasms.</p>"
+    },
+    {
+      "html": "<p>As they draw closer, the adventurers begin to notice disturbing details: the man is covered head-to-toe in scratches and smeared with blood, especially around his head, where the wounds are so deep and numerous that they look like a tangled web of threads. It seems he is unable to perceive any sound, ignoring all the adventurers’ questions.</p>"
+    },
+    {
+      "html": "<p>The adventurers decide to bring the man to a nearby village. The healers recognize him as Mirad, a respected druid. Soon after, horrifying screams come from his chamber—tiny aberrant creatures pour out of the druid’s orifices as he writhes in agony.</p>"
+    }
+  ],
+  "acts": [
+    {
+      "title": "Fight or Flee",
+      "description": "<p>The creatures begin to swarm around the people in the room. Each time one of them touches someone, it leaves a scratch or tears off a small piece of flesh. The characters must escape while saving as many people as possible. Use the following clocks to manage the escape progress.</p>",
+      "clocks": [
+        {
+          "name": "Adventurers’ Clock",
+          "color": "white",
+          "segments": 3,
+          "entries": [
+            { "value": 0, "summary": "Think Quickly. The characters must choose between fleeing and trying to save the people in the room." },
+            { "value": 1, "summary": "Kill Them With Fire. Someone throws a lantern; flames incinerate some aberrations." },
+            { "value": 2, "summary": "Unorthodox Methods. A heavy piece of furniture collapses, crushing dozens of aberrations." },
+            { "value": 3, "summary": "A Mage’s Help. A wizard casts a Globe of Invulnerability to shield the wounded." }
+          ]
+        },
+        {
+          "name": "Enemies’ Clock",
+          "color": "black",
+          "segments": 3,
+          "entries": [
+            { "value": 0, "summary": "Initial state." },
+            { "value": 1, "summary": "The swarm thickens and grows bolder." },
+            { "value": 2, "summary": "The air becomes toxic with spores." },
+            { "value": 3, "summary": "When full, all NPCs die and the aberrations flee." }
+          ]
+        }
+      ],
+      "modes": [
+        { "type": "Hard Mode", "text": "All creatures (excluding the aberrant ones) take 1/3 of their maximum HP as necrotic damage each round." },
+        { "type": "Brutal Mode", "text": "Advance the Enemies’ Clock every turn instead of every round." }
+      ]
+    },
+    {
+      "title": "The Curse",
+      "description": "<p>As the creatures flee, they cast a curse over the entire village. The characters must find them before the curse exterminates everyone.</p>",
+      "clocks": [
+        {
+          "name": "Adventurers’ Clock",
+          "color": "white",
+          "segments": 5,
+          "entries": [
+            { "value": 0, "summary": "Strange Sensation. The buzzing of the swarm still echoes in survivors’ ears." },
+            { "value": 1, "summary": "Going East. The characters pursue the creatures into the forest." },
+            { "value": 2, "summary": "A House in the Woods. They find a wounded man mourning his family." },
+            { "value": 3, "summary": "The Mountain. The party meets dwarves who offer to guide them east." },
+            { "value": 4, "summary": "The Ruins. The adventurers find the hive-like nest in corrupted ruins." },
+            { "value": 5, "summary": "Purification. The curse is lifted." }
+          ]
+        },
+        {
+          "name": "Enemies’ Clock",
+          "color": "black",
+          "segments": 3,
+          "entries": [
+            { "value": 0, "summary": "Curse, Stage 0. No visible effects." },
+            { "value": 1, "summary": "Curse, Stage 1. Victims weaken and develop cysts.", "brutal": "Physical exertion paralyzes them." },
+            { "value": 2, "summary": "Curse, Stage 2. Victims cannot sleep; parasites feed within.", "brutal": "Curse spreads by skin contact." },
+            { "value": 3, "summary": "Curse, Final Stage. Victims burst, releasing creatures.", "brutal": "Aberrations raise corpses as undead." }
+          ]
+        }
+      ],
+      "modes": [
+        { "type": "Hard Mode", "text": "The curse isn’t immediately recognized; requires investigation or magic to identify." },
+        { "type": "Brutal Mode", "text": "Apply the Brutal Effects listed for each curse stage." }
+      ]
+    }
+  ],
+  "ending": {
+    "title": "Ending",
+    "html": "<p>With the destruction of the corrupted tree, the curse is lifted. However, the consequences depend on how long it took the heroes to act. Dozens of villagers may have perished, or the corruption may still spread elsewhere.</p>"
+  },
+  "tags": ["Horror", "Investigation", "Nature"],
+  "author": "Cruor Games",
+  "date": "2025-10-29"
+}
