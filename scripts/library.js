@@ -1,60 +1,148 @@
-/* v1.0 2025-10-29T16:10:00Z */
+/* v2.3 2025-10-30T13:55:00Z */
+const libraryContainer = document.getElementById("library-container");
+const searchInput = document.getElementById("search-input");
+const categoryFilters = document.getElementById("category-filters");
+
+let contents = [];
+let categories = [];
+let activeFilters = new Set();
+
+/* --- LOAD DATA --- */
 async function loadLibrary() {
-  const res = await fetch('data/library.json');
-  const data = await res.json();
-  renderLibrary(data);
+  try {
+    const res = await fetch("/data/library.json");
+    const data = await res.json();
+    contents = data.contents;
+    categories = data.categories;
+    renderFilters();
+    renderLibrary(contents);
+  } catch (err) {
+    libraryContainer.innerHTML = `<p class="muted">Error loading library.</p>`;
+    console.error(err);
+  }
 }
 
-function renderLibrary(data) {
-  const container = document.getElementById('library-container');
+/* --- CATEGORY FILTERS --- */
+function renderFilters() {
+  categoryFilters.innerHTML = categories
+    .map(
+      (cat) => `
+        <img src="${cat.icon}"
+             alt="${cat.name}"
+             class="filter-icon has-tooltip"
+             data-id="${cat.id}"
+             data-key="${cat.id}"
+             data-tooltip-key="${cat.id}">
+      `
+    )
+    .join("");
 
-  // Categorie
-  const categoriesHTML = data.categories.map(cat => `
-    <section class="category">
-      <div class="category-header">
-        <img src="${cat.icon}" alt="${cat.name}" class="category-icon">
-        <div>
-          <h2>${cat.name}</h2>
-          <p>${cat.description}</p>
-        </div>
-      </div>
-      <div class="category-contents">
-        ${data.contents.filter(c => c.category === cat.id).map(renderContentCard).join('')}
-      </div>
-    </section>
-  `).join('');
+  // Gestione selezione filtri
+  document.querySelectorAll(".filter-icon").forEach((icon) => {
+    icon.addEventListener("click", () => {
+      const id = icon.dataset.id;
+      if (activeFilters.has(id)) activeFilters.delete(id);
+      else activeFilters.add(id);
+      icon.classList.toggle("active");
+      applyFilters();
 
-  container.innerHTML = categoriesHTML;
-}
-
-function renderContentCard(item) {
-  const locked = item.premium;
-  return `
-    <div class="content-card ${locked ? 'premium' : 'free'}">
-      <img src="${item.image}" alt="${item.title}">
-      <h3>${item.title}</h3>
-      <p>${item.excerpt}</p>
-      ${
-        locked
-          ? `<a href="${item.linkPremium}" class="content-btn locked" data-premium="true">Premium Access</a>`
-          : `<a href="${item.linkFree}" class="content-btn">View Free</a>`
+      // Chiudi subito eventuale tooltip aperto
+      if (window.Tooltips && typeof window.Tooltips.hide === "function") {
+        window.Tooltips.hide();
       }
-    </div>
-  `;
-}
-
-// Simulazione accesso Patreon (true = autenticato)
-const userIsPatreon = false; // cambia in true per test
-
-function unlockPremium() {
-  if (!userIsPatreon) return;
-  document.querySelectorAll('.content-card.premium').forEach(card => {
-    card.classList.add('unlocked');
-    const btn = card.querySelector('.content-btn');
-    btn.textContent = 'View Premium';
-    btn.classList.remove('locked');
-    btn.href = btn.href.replace('-premium', '-premium');
+    });
   });
 }
 
-loadLibrary().then(unlockPremium);
+/* --- RENDER LIBRARY --- */
+function renderLibrary(list) {
+  libraryContainer.innerHTML = list
+    .map((item) => {
+      const cat = categories.find((c) => c.id === item.category);
+      const catName = cat ? cat.name : "Unknown";
+      const catIcon = cat ? cat.icon : "";
+      const tags = item.tags
+        ? item.tags
+            .map(
+              (t) =>
+                `<span class="tag has-tooltip" data-key="${t.toLowerCase()}">${t}</span>`
+            )
+            .join("")
+        : "";
+      const premiumClass = item.premium ? "premium" : "";
+
+      return `
+        <div class="card ${premiumClass}" 
+             data-title="${item.title.toLowerCase()}"
+             data-tags="${item.tags.join(",").toLowerCase()}"
+             data-category="${item.category.toLowerCase()}">
+          <div class="card-inner">
+            <div class="card-front" style="background-image:url('${item.image}')">
+              <div class="card-front-content">
+                <div class="card-header">
+                  <img src="${catIcon}" alt="${catName}">
+                  <span class="category-name">${catName}</span>
+                </div>
+                <h3 class="card-title">${item.title}</h3>
+                <div class="card-tags">${tags}</div>
+              </div>
+            </div>
+
+            <div class="card-back" style="background-image:url('${item.image}')">
+              <div class="card-header">
+                <img src="${catIcon}" alt="${catName}">
+              </div>
+              <p>${item.excerpt}</p>
+              ${
+                item.premium
+                  ? `<span class="content-btn locked">🔒 Premium</span>`
+                  : `<a href="content.html?id=${item.id}" class="content-btn">Check Now</a>`
+              }
+            </div>
+          </div>
+        </div>
+      `;
+    })
+    .join("");
+
+  // Gestione flip card
+document.querySelectorAll(".card").forEach((card) => {
+  card.addEventListener("click", () => {
+    card.classList.toggle("flipped");
+    // chiudi tooltip se aperto
+    if (window.Tooltips && typeof window.Tooltips.hide === "function") {
+      window.Tooltips.hide();
+    }
+  });
+});
+
+// Evita che il click sul bottone ritriggeri il flip
+document.querySelectorAll(".content-btn").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    // (opzionale) chiudi tooltip
+    if (window.Tooltips && typeof window.Tooltips.hide === "function") {
+      window.Tooltips.hide();
+    }
+  });
+});
+
+}
+
+/* --- FILTERING --- */
+function applyFilters() {
+  const query = searchInput.value.toLowerCase().trim();
+  const filtered = contents.filter((c) => {
+    const matchesText =
+      c.title.toLowerCase().includes(query) ||
+      c.tags.some((t) => t.toLowerCase().includes(query));
+    const matchesCategory =
+      activeFilters.size === 0 || activeFilters.has(c.category);
+    return matchesText && matchesCategory;
+  });
+  renderLibrary(filtered);
+}
+
+/* --- INIT --- */
+searchInput.addEventListener("input", applyFilters);
+loadLibrary();

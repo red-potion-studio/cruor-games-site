@@ -1,0 +1,284 @@
+/* v2.3 2025-10-30T12:55:00Z */
+:root {
+  --bordeaux: #33030C;
+  --grey: #b8b8b8;
+  --white: #f5f5f5;
+  --black: #0a0a0a;
+}
+
+/* ===== HEADER ===== */
+.library-header {
+  text-align: center;
+  padding: 2rem 1rem 0.5rem;
+  background: linear-gradient(to bottom, #000 0%, #33030C 100%);
+  color: var(--white);
+}
+
+.library-header h1 {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+.search-bar {
+  margin: 1rem auto 0.5rem;
+  max-width: 400px;
+}
+.search-bar input {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--bordeaux);
+  border-radius: 4px;
+  background: #111;
+  color: var(--white);
+  font-size: 1rem;
+  font-family: "Inter", sans-serif;
+}
+.search-bar input:focus {
+  outline: 1px solid var(--grey);
+}
+
+/* ===== CATEGORY FILTER ICONS ===== */
+.category-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 0 1.5rem;
+}
+
+.filter-icon {
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  opacity: 0.3;                 /* deselezionata = 30% */
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.filter-icon:hover {
+  transform: scale(1.1);
+  opacity: 0.6;                  /* hover = 60% */
+}
+.filter-icon.active {
+  opacity: 1;                    /* selezionata = 100% */
+  transform: scale(1.1);
+}
+
+/* ===== GRID (4 card fisse per riga su desktop) ===== */
+.library-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;       /* centra righe corte */
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1200px;             /* 4 colonne comode anche su 1920px */
+  margin: auto;
+}
+
+/* Ogni card occupa il 25% della riga (meno il gap) */
+.card {
+  perspective: 1000px;
+  flex: 0 0 calc(25% - 1.5rem);
+  max-width: calc(25% - 1.5rem);
+  box-sizing: border-box;
+}
+
+/* ===== CARD ===== */
+.card-inner {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  aspect-ratio: 4 / 5;
+  transition: transform 0.7s ease;
+  cursor: pointer;
+}
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* FRONT/BACK strutture base */
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border: 1px solid var(--bordeaux);
+  border-radius: 8px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+}
+
+/* FRONT */
+.card-front {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+.card-front::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45); /* overlay fisso per leggibilità */
+  z-index: 1;
+}
+.card-front::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 10%, rgba(0,0,0,0.2) 100%);
+}
+.card-front-content {
+  position: relative;
+  z-index: 2;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card:not(.flipped) .card-front {
+  pointer-events: auto;
+}
+
+/* Header (icona + nome collezione) */
+.card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+.card-header img {
+  width: 50px;
+  height: 50px;
+}
+.card-header .category-name {
+  font-size: 0.7rem;
+  color: var(--grey);
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Titolo contenuto */
+.card-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--white);
+  text-shadow: 0 0 4px rgba(0,0,0,0.8);
+}
+
+/* Tags in basso */
+.card-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: auto;
+}
+.card-tags .tag {
+  background: rgba(51,3,12,0.7);
+  border: 1px solid var(--bordeaux);
+  border-radius: 3px;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.4rem;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;            /* per tooltip CSS-only fallback */
+  cursor: help;
+}
+
+/* BACK */
+.card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  color: var(--white);
+  text-align: center;
+  background-color: #111;
+}
+.card.flipped .card-back {
+  background-image: var(--bg-image); /* impostato dinamicamente */
+  pointer-events: auto;
+}
+.card-back::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55); /* overlay più scuro sul retro */
+  z-index: 1;
+}
+.card-back > * {
+  position: relative;
+  z-index: 2;
+}
+.card-back p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+.content-btn {
+  background: var(--bordeaux);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+.content-btn:hover {
+  background: #55061a;
+}
+
+/* ===== TOOLTIP UNIVERSALE ===== */
+#tooltip {
+  position: absolute;
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  background: #111;
+  border: 1px solid var(--grey);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-family: "Inter", sans-serif;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.15);
+  max-width: 240px;
+  z-index: 999;
+  transition: opacity 0.15s ease;
+}
+#tooltip strong {
+  color: var(--grey);
+  font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+  .card {
+    flex: 0 0 calc(33.33% - 1rem);
+    max-width: calc(33.33% - 1rem);
+  }
+}
+@media (max-width: 900px) {
+  .card {
+    flex: 0 0 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+  }
+}
+@media (max-width: 700px) {
+  .card {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .card-inner {
+    height: 300px;
+  }
+}

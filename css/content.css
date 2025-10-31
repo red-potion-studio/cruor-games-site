@@ -1,8 +1,20 @@
 /* v1.0 2025-10-29T23:40:00Z */
+@font-face {
+  font-family: 'Wolpe Pegasus Regular';
+  src: url('/assets/fonts/wolpe-pegasus-regular.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Wolpe Pegasus Bold';
+  src: url('/assets/fonts/wolpe-pegasus-bold.ttf') format('truetype');
+  font-style: bold;
+  font-display: swap;
+}
 /* ========== VARIABLES ========== */
 :root {
   --bordeaux: #33030C;
-  --gold: #c7ab6d;
   --white: #f5f5f5;
   --black: #0a0a0a;
   --gray: #888;
@@ -24,15 +36,17 @@ body.content-page {
   border: 1px solid var(--bordeaux);
   border-radius: 6px;
   box-shadow: 0 0 40px rgba(51,3,12,0.4);
+  font-weight: 100;
+  line-height: 1.6;
 }
 
 /* ========== HEADINGS ========== */
 .content-article h2,
 .content-article h3,
 .content-article h4 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Wolpe Pegasus Bold", sans-serif;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--grey);
   margin-top: 1.5rem;
   margin-bottom: 0.6rem;
   text-transform: uppercase;
@@ -45,10 +59,86 @@ body.content-page {
   padding-bottom: 0.4rem;
 }
 
+.content-article b {
+  font-weight: 600;
+}
+
 .intro {
   color: var(--gray);
   font-style: italic;
   margin-bottom: 1.5rem;
+}
+
+.article-header {
+  display: flex;
+  align-items: stretch;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto 2rem;
+}
+
+/* proporzioni 1/3 immagine, 2/3 testo */
+.article-header.image { flex: 1; }
+.article-header.text  { flex: 2; }
+
+/* contenitore immagine con rapporto fisso 4:5 */
+.article-header.image {
+  position: relative;
+  aspect-ratio: 4 / 5;      /* mantiene il rapporto */
+  overflow: hidden;
+  border-radius: 6px;
+  overflow: visible;
+}
+
+.article-header.image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* testo */
+.article-header.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.article-header.text h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.article-header.text h3 {
+  margin-top: 0;
+}
+
+.article-header.text p.intro {
+  color: #ccc;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+/* Responsivo */
+@media (max-width: 800px) {
+  .article-header {
+    flex-direction: column;
+  }
+
+  .article-header.image {
+    aspect-ratio: 4 / 5;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .article-header.text {
+    flex: unset;
+    text-align: center;
+  }
 }
 
 /* ========== IMAGES ========== */
@@ -58,6 +148,7 @@ body.content-page {
   border: 1px solid var(--bordeaux);
   border-radius: 4px;
   margin-bottom: 1.2rem;
+  aspect-ratio: 4 / 5;
 }
 
 /* ========== PLOT TABLE ========== */
@@ -70,7 +161,7 @@ body.content-page {
 
 .plot-table th {
   background: var(--bordeaux);
-  color: var(--gold);
+  color: var(--grey);
   font-weight: 600;
   text-align: left;
   padding: 0.5rem 0.7rem;
@@ -90,7 +181,7 @@ body.content-page {
 }
 
 blockquote {
-  border-left: 3px solid var(--gold);
+  border-left: 3px solid var(--grey);
   padding-left: 1rem;
   color: #ddd;
   font-style: italic;
@@ -100,7 +191,6 @@ blockquote {
 /* ========== ACTS & CLOCKS ========== */
 .act {
   margin: 2.5rem 0;
-  border-top: 1px solid var(--bordeaux);
   padding-top: 1.5rem;
 }
 
@@ -109,7 +199,7 @@ blockquote {
 }
 
 .clock h4 {
-  color: var(--gold);
+  color: var(--grey);
   margin-bottom: 0.5rem;
 }
 
@@ -122,7 +212,8 @@ blockquote {
 
 .clock-text h4 {
   margin: 0;
-  color: var(--bordeaux);
+  color: var(--white);
+  font-family: 'Montserrat';
 }
 
 .clock-text p {
@@ -148,7 +239,7 @@ svg {
   margin: 0.3rem 0;
 }
 .modes strong {
-  color: var(--gold);
+  color: var(--grey);
 }
 
 /* ========== ENDING SECTION ========== */
@@ -169,7 +260,7 @@ svg {
 .tag {
   display: inline-block;
   background: var(--bordeaux);
-  color: var(--gold);
+  color: var(--grey);
   border-radius: 2px;
   padding: 0.2rem 0.5rem;
   margin-right: 0.4rem;

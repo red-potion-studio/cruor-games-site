@@ -1,0 +1,57 @@
+{
+  "investigation": {
+    "title": "Investigation",
+    "text": "A skill used to analyze clues, deduce patterns, or uncover hidden details."
+  },
+  "nature": {
+    "title": "Nature",
+    "text": "Knowledge of flora, fauna, terrain, and natural phenomena."
+  },
+  "druid": {
+    "title": "Druid",
+    "text": "A spellcasting class attuned to nature and transformation magic."
+  },
+  "aberration": {
+    "title": "Aberration",
+    "text": "A creature type representing unnatural beings from beyond reality."
+  },
+
+
+  "dangerous-hazards": {
+    "title": "Dangerous Hazards",
+    "text": "Environmental dangers and traps to inflict terrible wounds on your player characters."
+  },
+  "dark-places": {
+    "title": "Dark Places",
+    "text": "Dungeons, ruins, and battlemaps where horror and treasure await."
+  },
+  "frightful-stories": {
+    "title": "Frightful Stories",
+    "text": "Short adventures filled with fear, mystery, and tragedy."
+  },
+  "gruesome-features": {
+    "title": "Gruesome Features",
+    "text": "Dark classes, feats, and races to build corrupted heroes."
+  },
+  "horrifying-spells": {
+    "title": "Horrifying Spells",
+    "text": "Black magic and vile incantations for those who dare to cast them."
+  },
+  "malicious-items": {
+    "title": "Malicious Items",
+    "text": "Cursed relics and occult objects that thirst for blood."
+  },
+  "tenebrous-thoughts": {
+    "title": "Tenebrous Thoughts",
+    "text": "Inspirational fragments to fuel your imagination."
+  },
+  "terrifying-monsters": {
+    "title": "Terrifying Monsters",
+    "text": "Abominations and nightmares to haunt your players."
+  },
+  "twisted-characters": {
+    "title": "Twisted Characters",
+    "text": "Villains and antiheroes who blur the line between virtue and corruption."
+  }
+
+}
