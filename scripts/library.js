@@ -71,37 +71,44 @@ function renderLibrary(list) {
         : "";
       const premiumClass = item.premium ? "premium" : "";
 
-      return `
-        <div class="card ${premiumClass}" 
-             data-title="${item.title.toLowerCase()}"
-             data-tags="${item.tags.join(",").toLowerCase()}"
-             data-category="${item.category.toLowerCase()}">
-          <div class="card-inner">
-            <div class="card-front" style="background-image:url('${item.image}')">
-              <div class="card-front-content">
-                <div class="card-header">
-                  <img src="${catIcon}" alt="${catName}">
-                  <span class="category-name">${catName}</span>
-                </div>
-                <h3 class="card-title">${item.title}</h3>
-                <div class="card-tags">${tags}</div>
-              </div>
-            </div>
+return `
+  <div class="card ${premiumClass}" 
+       data-title="${item.title.toLowerCase()}"
+       data-tags="${item.tags.join(",").toLowerCase()}"
+       data-category="${item.category.toLowerCase()}">
+    <div class="card-inner">
 
-            <div class="card-back" style="background-image:url('${item.image}')">
-              <div class="card-header">
-                <img src="${catIcon}" alt="${catName}">
-              </div>
-              <p>${item.excerpt}</p>
-              ${
-                item.premium
-                  ? `<span class="content-btn locked">🔒 Premium</span>`
-                  : `<a href="content.html?id=${item.id}" class="content-btn">Check Now</a>`
-              }
-            </div>
+      <!-- FRONT -->
+      <div class="card-front" style="background-image:url('${item.image}')">
+        <div class="card-front-content">
+          <div class="card-header">
+            <img src="${catIcon}" alt="${catName}">
+            <span class="category-name">${catName}</span>
           </div>
+          <h3 class="card-title">${item.title}</h3>
+          <div class="card-tags">${tags}</div>
         </div>
-      `;
+      </div>
+
+      <!-- BACK -->
+      <div class="card-back" style="background-image:url('${item.image}')">
+        <div class="card-header">
+          <img src="${catIcon}" alt="${catName}">
+        </div>
+        <div class="card-back-content">
+          <p>${item.excerpt}</p>
+          ${
+            item.premium
+              ? `<span class="content-btn locked">🔒 Premium</span>`
+              : `<a href="content.html?id=${item.id}" class="content-btn">Check Now</a>`
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+`;
+
+
     })
     .join("");
 

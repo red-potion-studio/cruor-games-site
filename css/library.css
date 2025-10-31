@@ -1,4 +1,4 @@
-/* v2.3 2025-10-30T12:55:00Z */
+/* v2.6 2025-10-30T17:10:00Z */
 :root {
   --bordeaux: #33030C;
   --grey: #b8b8b8;
@@ -10,16 +10,14 @@
 .library-header {
   text-align: center;
   padding: 2rem 1rem 0.5rem;
-  background: linear-gradient(to bottom, #000 0%, #33030C 100%);
+  background: #33030C;
   color: var(--white);
 }
-
 .library-header h1 {
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   color: var(--grey);
 }
-
 .search-bar {
   margin: 1rem auto 0.5rem;
   max-width: 400px;
@@ -34,9 +32,7 @@
   font-size: 1rem;
   font-family: "Inter", sans-serif;
 }
-.search-bar input:focus {
-  outline: 1px solid var(--grey);
-}
+.search-bar input:focus { outline: 1px solid var(--grey); }
 
 /* ===== CATEGORY FILTER ICONS ===== */
 .category-filters {
@@ -46,67 +42,92 @@
   gap: 1rem;
   padding: 1rem 0 1.5rem;
 }
-
 .filter-icon {
   width: 70px;
   height: 70px;
   cursor: pointer;
-  opacity: 0.3;                 /* deselezionata = 30% */
+  opacity: 0.3;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
-.filter-icon:hover {
-  transform: scale(1.1);
-  opacity: 0.6;                  /* hover = 60% */
-}
-.filter-icon.active {
-  opacity: 1;                    /* selezionata = 100% */
-  transform: scale(1.1);
-}
+.filter-icon:hover   { transform: scale(1.1); opacity: 0.6; }
+.filter-icon.active  { opacity: 1; transform: scale(1.1); }
 
-/* ===== GRID (4 card fisse per riga su desktop) ===== */
+/* ===== GRID ===== */
 .library-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;       /* centra righe corte */
+  justify-content: center;
   gap: 1.5rem;
   padding: 2rem;
-  max-width: 1200px;             /* 4 colonne comode anche su 1920px */
+  max-width: 1200px;
   margin: auto;
 }
 
-/* Ogni card occupa il 25% della riga (meno il gap) */
+/* ===== CARD ===== */
 .card {
   perspective: 1000px;
   flex: 0 0 calc(25% - 1.5rem);
   max-width: calc(25% - 1.5rem);
   box-sizing: border-box;
+  filter: drop-shadow(2px 4px 10px rgba(0,0,0,0.75));
+  border-radius: 10px;
 }
 
-/* ===== CARD ===== */
+/* ===== CARD INNER ===== */
 .card-inner {
   position: relative;
   width: 100%;
-  transform-style: preserve-3d;
   aspect-ratio: 4 / 5;
+  transform-style: preserve-3d;
   transition: transform 0.7s ease;
   cursor: pointer;
+  border-radius: inherit;
+  overflow: visible;
 }
 .card.flipped .card-inner {
   transform: rotateY(180deg);
 }
 
-/* FRONT/BACK strutture base */
+/* ===== BORDO LUMINOSO ANIMATO (IN 3D) ===== */
+.card-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  border: 2px solid transparent;
+  background: linear-gradient(
+    130deg,
+    #33030c,
+    #31040d,
+    #4e0303,
+    #36040e,
+    #33030c
+  ) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+          mask-composite: exclude;
+  background-size: 300% 300%;
+  animation: borderGlow 8s linear infinite;
+  z-index: 3;
+  pointer-events: none;
+}
+@keyframes borderGlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== FRONT & BACK ===== */
 .card-front,
 .card-back {
   position: absolute;
   inset: 0;
-  backface-visibility: hidden;
-  border: 1px solid var(--bordeaux);
-  border-radius: 8px;
-  overflow: hidden;
+  border-radius: 19px;
   background-size: cover;
   background-position: center;
-  pointer-events: none;
+  backface-visibility: hidden;
+  overflow: hidden;
+  z-index: 1;
 }
 
 /* FRONT */
@@ -120,14 +141,15 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45); /* overlay fisso per leggibilità */
+  background: rgba(0,0,0,0.4);
   z-index: 1;
 }
 .card-front::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.85) 10%, rgba(0,0,0,0.2) 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
+  z-index: 1;
 }
 .card-front-content {
   position: relative;
@@ -139,39 +161,82 @@
   height: 100%;
 }
 
-.card:not(.flipped) .card-front {
-  pointer-events: auto;
-}
-
-/* Header (icona + nome collezione) */
+/* ===== HEADER (usato su entrambe le facce) ===== */
 .card-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.25rem;
+  margin-bottom: 0.6rem;
+  position: relative;
+  z-index: 3;
 }
+
 .card-header img {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
+  display: block;
+  background: transparent;
+  padding: 4px;                /* evita taglio bordi */
+  box-sizing: border-box;
+  filter: drop-shadow(0 0 4px rgba(0,0,0,0.6));
 }
+
+
 .card-header .category-name {
   font-size: 0.7rem;
   color: var(--grey);
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  text-shadow: 0 0 4px rgba(0,0,0,0.8);
 }
 
-/* Titolo contenuto */
+/* ===== FRONT CONTENT ===== */
+.card-front-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0.8rem;
+}
+
+/* ===== BACK CONTENT ===== */
+.card-back-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+  padding: 1rem;
+  text-align: center;
+}
+
+.card-back-content p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+/* TITLE */
 .card-title {
   font-family: "Montserrat", sans-serif;
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--white);
   text-shadow: 0 0 4px rgba(0,0,0,0.8);
+  border-bottom: 1px solid var(--grey);
+  width: 100%;
 }
 
-/* Tags in basso */
+/* TAGS */
 .card-tags {
   display: flex;
   justify-content: center;
@@ -188,56 +253,58 @@
   color: var(--white);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  position: relative;            /* per tooltip CSS-only fallback */
+  position: relative;
   cursor: help;
 }
 
 /* BACK */
 .card-back {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) scaleX(-1);
+  background-color: #111;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  color: var(--white);
   text-align: center;
-  background-color: #111;
-}
-.card.flipped .card-back {
-  background-image: var(--bg-image); /* impostato dinamicamente */
-  pointer-events: auto;
+  padding: 0.8rem;
 }
 .card-back::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.55); /* overlay più scuro sul retro */
+  background: rgba(0,0,0,0.55);
+  z-index: 1;
+}
+.card-back::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
   z-index: 1;
 }
 .card-back > * {
   position: relative;
   z-index: 2;
+  transform: scaleX(-1);
 }
 .card-back p {
-  font-size: 0.9rem;
-  opacity: 0.9;
-  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  opacity: 0.95;
 }
 .content-btn {
   background: var(--bordeaux);
   color: var(--white);
-  padding: 0.5rem 1rem;
+  padding: 0.55rem 1rem;
   border-radius: 4px;
   text-decoration: none;
   font-weight: 600;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.1s ease;
+  margin-bottom: 1rem;
 }
-.content-btn:hover {
-  background: #55061a;
-}
+.content-btn:hover { background: #55061a; }
+.content-btn:active { transform: translateY(1px); }
 
-/* ===== TOOLTIP UNIVERSALE ===== */
+/* ===== TOOLTIP ===== */
 #tooltip {
   position: absolute;
   display: none;
@@ -252,33 +319,18 @@
   border-radius: 6px;
   box-shadow: 0 0 10px rgba(255,255,255,0.15);
   max-width: 240px;
-  z-index: 999;
+  z-index: 9999;
   transition: opacity 0.15s ease;
 }
-#tooltip strong {
-  color: var(--grey);
-  font-weight: 600;
-}
+#tooltip strong { color: var(--grey); font-weight: 600; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1200px) {
-  .card {
-    flex: 0 0 calc(33.33% - 1rem);
-    max-width: calc(33.33% - 1rem);
-  }
+  .card { flex: 0 0 calc(33.33% - 1rem); max-width: calc(33.33% - 1rem); }
 }
 @media (max-width: 900px) {
-  .card {
-    flex: 0 0 calc(50% - 1rem);
-    max-width: calc(50% - 1rem);
-  }
+  .card { flex: 0 0 calc(50% - 1rem); max-width: calc(50% - 1rem); }
 }
 @media (max-width: 700px) {
-  .card {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-  .card-inner {
-    height: 300px;
-  }
+  .card { flex: 0 0 100%; max-width: 100%; }
 }
