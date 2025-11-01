@@ -1,14 +1,14 @@
 {
   "id": "druid",
-  "title": "Druid",
+  "title": "The Druid",
   "type": "frightful-story",
   "image": "assets/images/library/druid.webp",
   "intro": "A healer’s faith twisted into something rooted and wrong.",
   "plot": {
-    "duration": "Short (6–12 hours)",
-    "difficulty": "Hard",
-    "type": "Investigation, Boss Fight",
-    "biome": "Wilderness",
+    "duration": "<span class='tag has-tooltip' data-key='duration-short'>Short</span>",
+    "difficulty": "<span class='tag has-tooltip' data-key='difficulty-hard'>Hard</span>",
+    "type": "<span class='tag has-tooltip' data-key='type-investigation'>Investigation</span>, <span class='tag has-tooltip' data-key='type-boss-fight'>Boss Fight</span>",
+    "biome": "<span class='tag has-tooltip' data-key='biome-wilderness'>Wilderness</span>",
     "introduction": "<i>The druid laid languidly in bed as a crowd of friends and family gathered around him: the illness afflicting him, contracted while he was outside the village, was the strangest the healers had ever seen.</i>"
   },
   "story": [
@@ -18,7 +18,7 @@
   ],
   "acts": [
     {
-      "title": "<h3 class='scroll-spy-h3'>1. Fight or Flee</h3>",
+      "title": "1. Fight or Flee",
       "description": "<p>The creatures begin to swarm around the people in the room. Each time one of them touches someone, it leaves a scratch or tears off a small piece of flesh. The swarm is so vast that, if  left to their fate, all NPCs would be devoured in seconds and reduced to a bloody pulp.</p><p>The characters must find a way to escape the room while saving as many people as possible. Use the following clocks to manage the escape progress.</p><p style='margin-left:2rem;'><b>Adventurers’ Clock (white, 3 segments).</b> Whenever the characters succeed in fleeing, rescuing a victim from the demons, or eliminating a large portion of demons, advance one segment.</p><p style='margin-left:2rem;'><b>Enemies’ Clock (black, 3 segments).</b> Every round, advance one segment. Whenever you advance one segment, modify the scenario according to the plot described in the corresponding segment description.</p><p style='margin-left:2rem;'><b><i>Hard Mode.</i></b> All creatures (excluding the aberrant creatures) in the room take 1/3 of their maximum Hit Points as Necrotic damage at the beginning of each round.</p><p style='margin-left:2rem;'><b><i>Brutal Mode.</i></b> Instead of progressing the Enemies’ Clock every round, progress it every turn.</p>",
       "clocks": [
         {
@@ -61,18 +61,18 @@
       ],
       "modes": [
         {
-          "type": "Hard Mode",
-          "text": "All creatures (excluding the aberrant ones) take 1/3 of their maximum HP as necrotic damage each round."
+          "type": "<b>Hard Mode</b>",
+          "text": "All creatures (excluding the aberrant ones) take 1/3 of their maximum Hit Points as Necrotic damage each round."
         },
         {
-          "type": "Brutal Mode",
+          "type": "<b>Brutal Mode</b>",
           "text": "Advance the Enemies’ Clock every turn instead of every round."
         }
       ]
     },
     {
-      "title": "<h3 class='scroll-spy-h3'>2. The Curse</h3>",
-      "description": "<p>As the creatures flee, they cast a curse over the entire village. The characters must find them before the curse exterminates everyone.</p>",
+      "title": "2. The Curse",
+      "description": "<p>As the creatures flee the druid’s chamber, the sound of their swarming fades, replaced by a funeral-like murmur spoken in an incomprehensible tongue. Before leaving the area, the creatures cast a curse over the entire village. Then, they rise into the sky, flying off in an unknown direction.</p><p>The characters must find the creatures before the curse exterminates them and the whole village. Use the following clocks to manage the research progress.</p><p style='margin-left:2rem;'><b>Adventurers’ Clock (white, 5 segments).</b> Whenever the characters find a new clue about the creatures location, advance one segment.</p><p style='margin-left:2rem;'><b>Enemies’ Clock (black, 3 segments).</b> Each day at dawn, advance one segment. Whenever you advance one segment, modify the scenario according to the plot described in the corresponding segment description.</p><p style='margin-left:2rem;'><b><i>Hard Mode.</i></b> The character don’t recognize the curse immediately. The curse may be recognized by succeeding in ability checks, asking an expert, or casting an appropriate spell.</p><p style='margin-left:2rem;'><b><i>Brutal Mode.</i></b> Use the Brual Effect of each curse step.</p>",
       "clocks": [
         {
           "name": "Adventurers’ Clock",
@@ -81,23 +81,23 @@
           "entries": [
             {
               "value": 0,
-              "summary": "<b>Strange Sensation.</b> The buzzing of the swarm still echoes in survivors’ ears."
+              "summary": "<b>Strange Sensation.</b> The creatures flee the village, but all who witnessed the events can still hear the buzzing of their swarming echoing in their ears."
             },
             {
               "value": 1,
-              "summary": "<b>Going East.</b> The characters pursue the creatures into the forest."
+              "summary": "<b>Going East.</b> The characters set off in pursuit of the creatures, entering a forest where unmistakable signs of their passage remain: all wildlife has been reduced to gruesome remnants."
             },
             {
               "value": 2,
-              "summary": "<b>A House in the Woods.</b> They find a wounded man mourning his family."
+              "summary": "<b>A House in the Woods.</b> The characters arrive at a house in a clearing. Just outside the door, a severely injured man weeps over the bodies of his wife and children, now unrecognizable. The man confirms to the characters that they are heading in the direction where he saw the cratures flee."
             },
             {
               "value": 3,
-              "summary": "<b>The Mountain.</b> The party meets dwarves who offer to guide them east."
+              "summary": "<b>The Mountain.</b> The characters observe a landslide caused by the swarm scraping against the slope as it moved eastward. A group of dwarves who witnessed the scene notices the characters and offers to help, guiding them along the mountain paths while carrying their equipment."
             },
             {
               "value": 4,
-              "summary": "<b>The Ruins.</b> The adventurers find the hive-like nest in corrupted ruins."
+              "summary": "<b>The Ruins.</b> The adventurers arrive at the ruins of a dark and mysterious place, now overrun with fleshy, hive-like growths that aberrations are building to establish their nest. At the heart of the ruins lies a frantically pulsing mass. This grotesque formation was once a magical tree that provided vital energy to all flora and fauna in the region, but it has been corrupted by an otherworldly being intent on infecting vast natural areas through a powerful curse. By destroying the tainted plant, the curse’s effects will come to an end."
             },
             { "value": 5, "summary": "<b>Purification.</b> The curse is lifted." }
           ]
@@ -107,32 +107,32 @@
           "color": "black",
           "segments": 3,
           "entries": [
-            { "value": 0, "summary": "Curse, Stage 0. No visible effects." },
+            { "value": 0, "summary": "<b>Curse, Stage 0.</b> The curse has no visible effects." },
             {
               "value": 1,
-              "summary": "<b><i>Curse, Stage 1.</i></b> Victims weaken and develop cysts.",
-              "brutal": "Physical exertion paralyzes them."
+              "summary": "<b>Curse, Stage 1.</b> Cursed creatures begin to feel weaker, struggling to complete physical tasks that would normally pose no challenge for them. Cysts form within their bodies, housing countless tiny creatures that grow and multiply.",
+              "brutal": "If cursed creatures exert themselves physically, their muscles seize up, leaving them paralyzed."
             },
             {
               "value": 2,
-              "summary": "<b><i>Curse, Stage 2.</i></b> Victims cannot sleep; parasites feed within.",
-              "brutal": "Curse spreads by skin contact."
+              "summary": "<b>Curse, Stage 2.</b> Cursed creatures can no longer sleep and find it difficult to engage in any activity due to the unbearable itch that plagues their entire bodies. The creatures within them begin to feed on their hosts’ flesh in order to grow.",
+              "brutal": "Cursed creatures can spread the curse to others touching their exposed skin."
             },
             {
               "value": 3,
-              "summary": "<b><i>Curse, Final Stage.</i></b> Victims burst, releasing creatures.",
-              "brutal": "Aberrations raise corpses as undead."
+              "summary": "<b>Curse, Final Stage.</b> The skin of the cursed creatures becomes soft, and each time one scratches itself, it opens a deep wound. Within a few hours, a cursed creature loses consciousness. The creatures that have grown inside it devour all its internal organs and then burst forth from its body.",
+              "brutal": "Cadavers left from the burst are raised by the aberrations as undead servants."
             }
           ]
         }
       ],
       "modes": [
         {
-          "type": "Hard Mode",
+          "type": "<b>Hard Mode</b>",
           "text": "The curse isn’t immediately recognized; requires investigation or magic to identify."
         },
         {
-          "type": "Brutal Mode",
+          "type": "<b>Brutal Mode</b>",
           "text": "Apply the Brutal Effects listed for each curse stage."
         }
       ]
@@ -140,7 +140,7 @@
   ],
   "ending": {
     "title": "Ending",
-    "html": "<p>With the destruction of the corrupted tree, the curse is lifted. However, the consequences depend on how long it took the heroes to act. Dozens of villagers may have perished, or the corruption may still spread elsewhere.</p>"
+    "html": "<p>With the destruction of the corrupted tree, the curse is effectively lifted. However, it is up to the game master to determine the consequences of the period during which the curse was in effect.</p><p>Furthermore, the entity behind this attack may not stop here; it could have further plans or may have already corrupted other locations across the planet, which are now beginning to spread the curse.</p><p>Depending on how many days it took the characters to resolve the situation, dozens of villagers may have met the same fate as the druid. Alternatively, they may have found other solutions, such as binding themselves to one another to prevent scratching to the point of completely tearing their skin.</p>"
   },
   "tags": ["Horror", "Investigation", "Nature"],
   "author": "Cruor Games",

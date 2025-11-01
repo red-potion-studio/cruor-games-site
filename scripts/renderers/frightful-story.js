@@ -1,6 +1,6 @@
 export function renderFrightfulStory(data) {
   const plotTable = `
-    <table class="plot-table">
+    <table class="header-table">
       <tr><th>Duration</th><td>${data.plot.duration}</td></tr>
       <tr><th>Difficulty</th><td>${data.plot.difficulty}</td></tr>
       <tr><th>Type</th><td>${data.plot.type}</td></tr>
@@ -15,9 +15,11 @@ export function renderFrightfulStory(data) {
     .map(
       (act) => `
     <section class="act">
-      <h3>${act.title}</h3>
+      <h3 class="scroll-spy-h3">${act.title}</h3>
       ${act.description}
-      ${act.clocks.map(renderClock).join("")}
+      <div class="clocks-wrapper">
+  ${act.clocks.map(renderClock).join("")}
+</div>
       ${
         act.modes
           ? `<div class="modes">${act.modes
@@ -37,19 +39,19 @@ export function renderFrightfulStory(data) {
     </section>
   `;
 
-return `
+  return `
   <article class="content-article frightful-story">
     <div class="article-header frightful-story">
       <div class="article-header image">
         <img src="${data.image}" alt="${data.title}" class="content-hero">
       </div>
       <div class="article-header text">
-        <h2>${data.title}</h2>
+        <h1>${data.title}</h1>
         ${plotTable}
       </div>
     </div>
 
-    <h2 class="scroll-spy-h2" id="story">Story</h2>
+    <h2 class="scroll-spy-h2" id="story">Incipit</h2>
     ${storyHTML}
 
     <h2 class="scroll-spy-h2" id="acts">Acts</h2>
@@ -58,7 +60,9 @@ return `
     <h2 class="scroll-spy-h2" id="ending">Ending</h2>
     ${endingHTML}
 
-    <div class="tags">${data.tags.map(t => `<span class="tag">${t}</span>`).join(" ")}</div>
+    <div class="tags">${data.tags
+      .map((t) => `<span class="tag">${t}</span>`)
+      .join(" ")}</div>
     <p class="meta">Written by ${data.author} — ${data.date}</p>
   </article>
 `;
@@ -74,7 +78,7 @@ function renderClock(clock) {
         <h4>${e.value}/${clock.segments}</h4>
         <p>${e.summary}${
         e.brutal
-          ? `<br><em><strong>Brutal Effect:</strong> ${e.brutal}</em>`
+          ? `<p style="margin-top: 1rem;"><i><b>Brutal Effect:</b> ${e.brutal}</i></p>`
           : ""
       }</p>
       </div>
@@ -82,7 +86,7 @@ function renderClock(clock) {
   `
     )
     .join("");
-  return `<div class="clock"><h4>${clock.name}</h4>${entries}</div>`;
+  return `<div class="clock"><div class="clock-background"><h4>${clock.name}</h4>${entries}</div></div>`;
 }
 
 function renderCircle(color, filled, total) {

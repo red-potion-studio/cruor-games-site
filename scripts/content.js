@@ -1,5 +1,5 @@
-/* v1.4 2025-10-29T21:00:00Z */
-import { renderDarkPlace } from "./renderers/dark-place.js";
+/* v1.6 2025-11-01T22:35:00Z */
+import { renderDarkPlace, initMapMarkers } from "./renderers/dark-place.js";
 import { renderFrightfulStory } from "./renderers/frightful-story.js";
 
 const renderers = {
@@ -8,20 +8,11 @@ const renderers = {
 };
 
 async function loadContent() {
-  console.log("Starting loadContent...");
   const id = new URLSearchParams(location.search).get("id");
-  console.log("ID:", id);
-
-  const index = await fetch("/data/index.json").then(r => r.json());
-  console.log("Index loaded:", index);
-
+  const index = await fetch("data/index.json").then(r => r.json());
   const path = index[id];
-  console.log("Path:", path);
-
-  const res = await fetch(`/data/contents/${path}`);
-  console.log("Response status:", res.status);
+  const res = await fetch(`data/contents/${path}`);
   const data = await res.json();
-  console.log("Data loaded:", data);
 
   renderContent(data);
 }
@@ -32,10 +23,37 @@ function renderContent(data) {
   if (!renderer) return showError(`No renderer for type: ${data.type}`);
 
   container.innerHTML = renderer(data);
+
+  if (data.type === "dark-place") {
+    initMapMarkers();
+    Tooltips.refresh();
+  }
+
+  // --- Symbolize ---
+  symbolizeSpans();
 }
 
 function showError(msg) {
   document.getElementById("content-container").innerHTML = `<p>${msg}</p>`;
+}
+
+async function symbolizeSpans() {
+  try {
+    const iconMap = await fetch("/data/icons.json").then(r => r.json());
+    document.querySelectorAll('span[type="symbolize"]').forEach(span => {
+      const key = span.textContent.trim();
+      if (!iconMap[key]) return;
+
+      const icon = document.createElement("img");
+      icon.src = iconMap[key];
+      icon.alt = key;
+      icon.classList.add("inline-icon");
+
+      span.prepend(icon);
+    });
+  } catch (err) {
+    console.error("Symbolize error:", err);
+  }
 }
 
 loadContent();

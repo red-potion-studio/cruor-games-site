@@ -15,9 +15,19 @@
 /* ========== VARIABLES ========== */
 :root {
   --bordeaux: #33030C;
+  --bordeaux-2: #660819;
+  --red: #a30f2a;
   --white: #f5f5f5;
   --black: #0a0a0a;
   --gray: #888;
+  --easy: #4b9e60;
+  --normal: #afad49;
+  --hard: #ac7243;
+  --deadly: #b13d3d;
+
+  --bordeaux-rgb: 51, 3, 12;
+  --bordeaux-2-rgb: 102, 8, 25;
+  --red-rgb: 163, 15, 42;
 }
 
 /* ========== LAYOUT BASE ========== */
@@ -28,35 +38,61 @@ body.content-page {
   line-height: 1.6;
 }
 
+p {
+    margin-block-start: 0em;
+}
+
+.has-tooltip {
+  cursor: help;
+  background: var(--bordeaux-2);
+  padding: .2rem .7rem;
+  border-radius: .7rem;
+  font-weight: 500;
+}
+
 .content-article {
   max-width: 900px;
   margin: 3rem auto;
   padding: 2rem;
   background: rgba(0,0,0,0.65);
-  border: 1px solid var(--bordeaux);
-  border-radius: 6px;
+  border: 2px solid var(--bordeaux);
+  border-radius: 15px;
   box-shadow: 0 0 40px rgba(51,3,12,0.4);
   font-weight: 100;
   line-height: 1.6;
+}
+
+.content-article section {
+  width: unset;
 }
 
 /* ========== HEADINGS ========== */
 .content-article h2,
 .content-article h3,
 .content-article h4 {
-  font-family: "Wolpe Pegasus Bold", sans-serif;
-  font-weight: 600;
   color: var(--grey);
   margin-top: 1.5rem;
   margin-bottom: 0.6rem;
-  text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
 .content-article h2 {
-  font-size: 2rem;
-  border-bottom: 1px solid var(--bordeaux);
-  padding-bottom: 0.4rem;
+  font-family: "Wolpe Pegasus Bold", sans-serif;
+  font-size: 2.5rem;
+  background: rgba(var(--bordeaux-rgb), 0.5);
+  box-shadow: 0 0 10px black;
+  border-radius: 10px;
+  padding: 0 0 0.4rem 1rem;
+  border: 2px solid var(--bordeaux);
+}
+
+.content-article h3 {
+  font-family: Inter, sans-serif;
+  font-size: 1.5rem;
+}
+
+.content-article h4 {
+  text-transform: uppercase;
 }
 
 .content-article b {
@@ -105,14 +141,24 @@ body.content-page {
   gap: 0;
 }
 
+.article-header.text h1 {
+  font-family: "Wolpe Pegasus Bold", sans-serif;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
 .article-header.text h2 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Wolpe Pegasus Bold", sans-serif;
   font-size: 2rem;
   margin-bottom: 0.5rem;
   margin-top: 0;
 }
 
 .article-header.text h3 {
+  font-family: "Wolpe Pegasus Bold", sans-serif;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
   margin-top: 0;
 }
 
@@ -139,6 +185,41 @@ body.content-page {
     flex: unset;
     text-align: center;
   }
+
+  .content-article h2,
+  .content-article h3 {
+    text-align: center;
+  }
+}
+
+/* ========== PLOT TABLE ========== */
+.header-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.header-table th {
+  background: var(--bordeaux);
+  color: var(--grey);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid #1a0105;
+}
+
+.header-table td {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--bordeaux);
+  background: rgba(255,255,255,0.03);
+}
+
+.header-table td:first-child {
+  border-top-right-radius: 10px;
+}
+.header-table td:last-child {
+  border-bottom-right-radius: 10px;
 }
 
 /* ========== IMAGES ========== */
@@ -149,108 +230,6 @@ body.content-page {
   border-radius: 4px;
   margin-bottom: 1.2rem;
   aspect-ratio: 4 / 5;
-}
-
-/* ========== PLOT TABLE ========== */
-.plot-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
-}
-
-.plot-table th {
-  background: var(--bordeaux);
-  color: var(--grey);
-  font-weight: 600;
-  text-align: left;
-  padding: 0.5rem 0.7rem;
-  border: 1px solid #1a0105;
-}
-
-.plot-table td {
-  padding: 0.5rem 0.7rem;
-  border: 1px solid var(--bordeaux);
-  background: rgba(255,255,255,0.03);
-}
-
-/* ========== STORY TEXT ========== */
-.story-section p,
-.content-body p {
-  margin-bottom: 1rem;
-}
-
-blockquote {
-  border-left: 3px solid var(--grey);
-  padding-left: 1rem;
-  color: #ddd;
-  font-style: italic;
-  opacity: 0.9;
-}
-
-/* ========== ACTS & CLOCKS ========== */
-.act {
-  margin: 2.5rem 0;
-  padding-top: 1.5rem;
-}
-
-.clock {
-  margin-top: 1rem;
-}
-
-.clock h4 {
-  color: var(--grey);
-  margin-bottom: 0.5rem;
-}
-
-.clock-entry {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-.clock-text h4 {
-  margin: 0;
-  color: var(--white);
-  font-family: 'Montserrat';
-}
-
-.clock-text p {
-  margin: 0.3rem 0 0;
-  line-height: 1.4;
-  color: var(--white);
-}
-
-svg {
-  display: block;
-  flex-shrink: 0;
-}
-
-/* ========== MODES (Hard / Brutal) ========== */
-.modes {
-  background: rgba(51,3,12,0.3);
-  border: 1px solid var(--bordeaux);
-  border-radius: 4px;
-  padding: 0.8rem 1rem;
-  margin-top: 1rem;
-}
-.modes p {
-  margin: 0.3rem 0;
-}
-.modes strong {
-  color: var(--grey);
-}
-
-/* ========== ENDING SECTION ========== */
-.ending {
-  border-top: 1px solid var(--bordeaux);
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
-}
-.ending p {
-  font-style: italic;
-  color: var(--gray);
 }
 
 /* ========== TAGS & META ========== */
@@ -280,7 +259,7 @@ svg {
 .spy-nav {
   position: fixed;
   top: 50%;
-  right: 2rem;
+  left: 4rem;
   transform: translateY(-50%);
   display: flex;
   align-items: center;
@@ -290,7 +269,7 @@ svg {
 
 .spy-line {
   position: absolute;
-  left: 7px;
+  left: -15px;
   width: 2px;
   height: 320px;
   background: linear-gradient(to bottom,
@@ -317,12 +296,11 @@ svg {
 }
 
 .spy-list a {
-  display: block;
   width: 12px;
   height: 12px;
-  border-radius: 50%;
   background: rgba(255,255,255,0.15);
   border: 1px solid rgba(255,255,255,0.25);
+  transform: rotate(45deg);       /* gira il quadrato per ottenere un rombo */
   transition: all .25s ease;
 }
 
@@ -348,38 +326,73 @@ svg {
   font-size: .75rem;
   color: #bbb;
 }
+
+.scroll-spy-h2,
+.scroll-spy-h3 {
+  scroll-margin-top: 5vh;
+}
 /* === Mobile e tablet === */
-@media (max-width: 900px) {
+@media (max-width: 1351px) {
+  /* dimensione dello "slot" per ogni punto (puoi regolarla) */
+  .spy-nav { --spy-slot: 84px; }
+
   .spy-nav {
     position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
+    left: 0; right: 0;
     top: auto;
     transform: none;
-    justify-content: center;
     background: rgba(10, 5, 5, 0.9);
     padding: .5rem 1rem;
     border-top: 1px solid rgba(255,255,255,0.1);
+    z-index: 100;
   }
 
-  .spy-line {
-    display: none;
-  }
+  .spy-line { display: none; }
 
+  /* track scrollabile orizzontalmente */
   .spy-list {
+    display: flex;
     flex-direction: row;
-    justify-content: center;
-    gap: 1rem;
+    align-items: flex-start;
+    gap: 0;                       /* nessuna influenza delle label sulla distanza */
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;/* comodo per lo swipe */
+    width: 100%;
+    padding: .25rem 0;
+    scrollbar-width: thin;
   }
 
+  /* ogni punto occupa sempre lo stesso spazio orizzontale */
   .spy-list li {
+    flex: 0 0 var(--spy-slot);    /* larghezza fissa per slot */
+    width: var(--spy-slot);
+    min-width: var(--spy-slot);
+    scroll-snap-align: center;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: .3rem;
   }
 
+  /* rombo */
+  .spy-list a {
+    width: 12px;
+    height: 12px;
+    transform: rotate(45deg);
+  }
+
+  /* label sotto il rombo */
   .spy-list span {
+    display: block;
     font-size: .7rem;
+    margin-top: .35rem;
+    text-align: center;
+    line-height: 1.1;
+    /* facoltativo: limita altezza per non "alzare" la barra */
+    max-height: 2.2rem;           /* ~2 righe */
+    overflow: hidden;
   }
 }

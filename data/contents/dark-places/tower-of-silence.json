@@ -1,0 +1,114 @@
+{
+  "id": "tower-of-silence",
+  "title": "The Tower of Silence",
+  "type": "dark-place",
+  "image": "assets/images/library/tower-of-silence.webp",
+  "plot": {
+    "biome": "<span class='tag has-tooltip' data-tooltip-type='Tag' data-tooltip-key='biome-ruins'>Ruins</span>, <span class='tag has-tooltip' data-key='biome-any'>Any</span>",
+    "type": "<span class='tag has-tooltip' data-key='type-burial'>Burial Grounds</span>",
+    "light": "<span class='tag has-tooltip' data-key='light-dark'>Natural Darkness</span>",
+    "size": "15×20 Squares",
+    "introduction": "<i>A necrotic temple built around death’s stillness, where silence itself devours the living.</i>"
+  },
+  "characteristics": [
+    "<b>Cult of the Macabre.</b> The structure houses cultists who worship the macabre as part of their religious practices. Therefore, idols made from pieces of decomposed corpses impaled on metal rods, reliquaries created by stitching together rancid skin, and furniture made partly of wood and partly of humanoid remains can be found everywhere.",
+    "<b>Innatural Silence.</b> Wisdom Saving Throw, DC 14, each creature in the area. Failure: the target has the <i>Mute</i> condition until it leaves the area. A creature can attempt this saving throw only once per day."
+  ],
+  "areas": [
+    {
+      "name": "1. Entrance",
+      "description": "Access to the entrance is gained through an ascending corridor connecting the outside to the structure. The walls of this circular room are adorned with rudimentary paintings made with blood. Chains with hooks hang from the ceiling, impaling human torsos in advanced decomposition. The air is foul-smelling and stagnant due to the lack of ventilation."
+    },
+    {
+      "name": "2. Ceremonial Hall",
+      "description": "Chains with hooks rise from the floor, suspending decomposing human torsos mid-air as if defying gravity. In the center of the hall, several stone tables are used to dismember and prepare bodies for ceremonies, rituals, or spells."
+    },
+    {
+      "name": "3. Dormitory",
+      "description": "Several makeshift, filthy bedding arrangements are arranged in a circle, exuding a nauseating stench of rot. The straw mats and blankets are marred with conspicuous reddish stains."
+    },
+    {
+      "name": "4. Corpse Dump",
+      "description": "The room contains a deep central well filled with decomposed human remains and skeletons. Narrow openings along the walls allow liquids to drain through channels, collecting in a stoup on the eastern side."
+    },
+    {
+      "name": "5. Storeroom",
+      "description": "Numerous damaged shelves lean against the walls. These shelves hold jars and containers filled with body parts preserved in alchemical substances, along with everyday items such as blankets, carpentry materials, and tools."
+    },
+    {
+      "name": "6. The Tower of Silence",
+      "description": "Partially detached from the rest of the structure, the tower is reached via a stone ladder that ascends along its wall. The top of the tower is flat and features numerous radially arranged pits. In each pit lies a corpse with crossed arms and a burlap hood covering its head. The bodies magically disintegrate, with fragments of their flesh slowly floating towards a gem suspended in mid-air at the tower’s center, absorbing them while emitting a deep hum."
+    }
+  ],
+  "curio": "<b>Blood Collection.</b> A vast collection of blood-filled vials sits on a shelf, each with a parchment label inscribed in Abyssal, bearing the name of the individual it belongs to. If a character drinks the contents of a vial—Constitution Saving Throw DC 16. Failure: 21 (6d6) Necrotic damage. Success: the character becomes immune to Diseases for 1 month.",
+  "encounters": {
+    "description": "Add the following encounters wherever you see fit.",
+    "tables": [
+      {
+        "headers": ["APL", "2", "4", "6", "8", "10"],
+        "rows": [
+          ["<b>Basic Encounter – <span style='color: var(--normal)'>Normal</span> to <span style='color: var(--hard)'>Hard</span></b>", "", "", "", "", ""],
+          ["Acolyte", "4", "5", "5", "5", "5"],
+          ["Deathlock", "–", "–", "1", "2", "3"],
+          ["<b>Basic Encounter – <span style='color: var(--deadly)'>Deadly</span></b>", "", "", "", "", ""],
+          ["Acolyte", "1", "2", "2", "1", "–"],
+          ["Deathlock Wight", "1", "–", "–", "1", "–"],
+          ["Deathlock", "–", "1", "–", "–", "–"],
+          ["Deathlock Mastermind", "–", "–", "1", "1", "–"],
+          ["Necromancer Wizard", "–", "–", "–", "–", "1"]
+        ]
+      }
+    ]
+  },
+  "hazards": [
+    "<b>Noxious Vapors.</b> An invisible cloud of vapors, produced by the magically decomposing bodies, permeates a 30-foot-radius sphere, displacing the oxygen. The cloud is indistinguishable from the surrounding foul-smelling air by sight or smell. All creatures within the cloud Suffocate. Constitution Saving Throw DC 20, each creature within the cloud. Failure: the target contracts the <i>Blood Rot</i> disease.",
+    "<b>Blood Rot.</b> The blood of an infected creature begins to break down and decompose, rapidly leading to organ failure. The character’s maximum Hit Points are halved at the end of each Long Rest (rounded up, minimum 1). If the character does not cure Blood Rot within 10 days of contracting it, they die. Blood Rot can be cured with <i>Lesser Restoration</i> or <i>Heal</i> spells, or a Potion of Cure Disease, restoring the original maximum Hit Points."
+  ],
+  "treasures": {
+    "description": "Add the following treasures in area 5 (Storeroom) or wherever you see fit.",
+    "table": {
+      "headers": ["Qty.", "Treasure"],
+      "rows": [
+        ["2800", "Silver Pieces (SP)"],
+        ["1", "Libram of Souls and Flesh"],
+        ["1", "Ring of Spell Storing"],
+        ["1", "Wand of Paralysis"]
+      ]
+    }
+  },
+  "mapImage": "assets/images/maps/tower-of-silence.webp",
+  "mapMarkers": [
+    {
+      "id": "1-entrance",
+      "label": "1",
+      "x": "19%",
+      "y": "45%",
+      "title": "Entrance"
+    },
+    {
+      "id": "2-ceremonial-hall",
+      "label": "2",
+      "x": "50%",
+      "y": "45%",
+      "title": "Ceremonial Hall"
+    },
+    {
+      "id": "3-dormitory",
+      "label": "3",
+      "x": "60%",
+      "y": "21%",
+      "title": "Dormitory"
+    },
+    {
+      "id": "4-corpse-dump",
+      "label": "4",
+      "x": "82%",
+      "y": "42%",
+      "title": "Dormitory"
+    }
+  ],
+
+  "tags": ["Dungeon", "Burial Grounds", "Undead"],
+  "author": "Cruor Games",
+  "date": "2025-11-01"
+}

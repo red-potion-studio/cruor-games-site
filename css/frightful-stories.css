@@ -1,0 +1,128 @@
+/* ========== STORY TEXT ========== */
+.story-section p,
+.content-body p {
+  margin-bottom: 1rem;
+}
+
+blockquote {
+  border-left: 3px solid var(--grey);
+  padding-left: 1rem;
+  color: #ddd;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* ========== ACTS & CLOCKS ========== */
+.act {
+  margin: 0.5rem 0;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.clock {
+  margin-top: 1rem;
+  border-radius: 10px;
+  padding: 0 1rem;
+}
+
+/* layout solo per i clock */
+.clocks-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+@media (min-width: 900px) {
+  .clocks-wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3rem; /* distanzia solo i clock */
+  }
+
+  .clocks-wrapper .clock {
+    flex: 1 1 45%;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .clocks-wrapper .clock {
+    flex: 1 1 min(360px, 48%);
+  }
+}
+
+.clock h4 {
+  color: var(--grey);
+  margin: 0 0 1rem 0;
+  border-bottom: 1px solid var(--bordeaux);
+}
+
+.clock-entry {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.clock-background {
+    background: rgba(255, 255, 255, 0.03);
+    margin-inline: -1rem;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.clock-entry:hover svg {
+  filter: drop-shadow(0 0 7px rgba(131, 120, 120, 0.5));
+  transition: all .2s ease-in-out;
+  transform: scale(1.15);
+}
+
+.clock-entry:hover {
+    transition: all .2s ease-in-out;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.clock-text h4 {
+  margin: 0;
+  color: var(--white);
+  font-family: 'Montserrat';
+  border-bottom: none;
+}
+
+.clock-text p {
+  margin: 0.3rem 0 0;
+  line-height: 1.4;
+  color: var(--white);
+}
+
+svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ========== MODES (Hard / Brutal) ========== */
+.modes {
+  background: rgba(51,3,12,0.3);
+  border: 1px solid var(--bordeaux);
+  border-radius: 4px;
+  padding: 0.8rem 1rem;
+  margin-top: 1rem;
+}
+.modes p {
+  margin: 0.3rem 0;
+}
+.modes strong {
+  color: var(--grey);
+}
+
+/* ========== ENDING SECTION ========== */
+.ending {
+  margin-top: 0;
+  padding-top: 0;
+}
+.ending p {
+  font-style: italic;
+  color: var(--gray);
+}
