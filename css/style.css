@@ -93,8 +93,15 @@ header p {
   z-index: 1;
 }
 
-.banner-text { width: 250px; }
-@media (min-width: 768px) { .banner-text { width: 650px; } }
+.banner-text {
+  width: 250px;
+}
+
+@media (min-width: 768px) {
+  .banner-text {
+    width: 650px;
+  }
+}
 
 .banner-text-wrap {
   position: relative;
@@ -130,7 +137,7 @@ header p {
 }
 
 section.slider {
-    padding: 1rem 0 1rem 1rem;
+  padding: 1rem 0 1rem 1rem;
 }
 
 .slider-track {
@@ -194,7 +201,7 @@ section.slider {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(51,3,12,0.8);
+  background: rgba(51, 3, 12, 0.8);
   border: none;
   color: var(--white);
   font-size: 1.5rem;
@@ -203,9 +210,18 @@ section.slider {
   z-index: 2;
   transition: background 0.3s;
 }
-.slider-btn:hover { background: rgba(51,3,12,1); }
-.slider-btn.prev { left: 10px; }
-.slider-btn.next { right: 10px; }
+
+.slider-btn:hover {
+  background: rgba(51, 3, 12, 1);
+}
+
+.slider-btn.prev {
+  left: 10px;
+}
+
+.slider-btn.next {
+  right: 10px;
+}
 
 .slide-btn {
   display: inline-block;
@@ -242,15 +258,17 @@ section.slider {
   gap: 8px;
   z-index: 3;
 }
+
 .slider-dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.4);
+  background: rgba(255, 255, 255, 0.4);
   border: 1px solid var(--bordeaux);
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
 }
+
 .slider-dot.active {
   background: var(--bordeaux);
   transform: scale(1.2);
@@ -279,12 +297,12 @@ section.slider {
 /* Sezioni */
 section {
   padding: 2rem 1rem;
-  max-width: 900px;
+  width: 100%;
   margin: 0 auto;
 }
 
 h3 {
-  font-family: Montserrat, Inter, sans-serif;
+  font-family: "Wolpe Pegasus Bold", "Montserrat", sans-serif;
   border-bottom: 1px solid var(--bordeaux);
   padding-bottom: .3rem;
   margin-bottom: 1rem;
@@ -292,8 +310,18 @@ h3 {
   letter-spacing: .5px;
 }
 
+.col-center {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 .about p {
   line-height: 1.6;
+}
+
+section.about {
+  background: rgba(51, 3, 12, 0.3);
+  margin-top: 5rem;
 }
 
 /* Auth */
@@ -338,18 +366,150 @@ h3 {
   font-family: "Inter", sans-serif;
   padding: 0.5rem 0.8rem;
   border-radius: 6px;
-  box-shadow: 0 0 10px rgba(199,171,109,0.4);
+  box-shadow: 0 0 10px rgba(199, 171, 109, 0.4);
   max-width: 240px;
   z-index: 999;
   transition: opacity 0.15s ease;
 }
+
 #tooltip strong {
   color: var(--gold);
   font-weight: 600;
 }
-.filter-icon:hover + #tooltip {
+
+.filter-icon:hover+#tooltip {
   margin-top: -8px;
 }
+
+/* === ARCHIVES PORTAL === */
+.archives-portal {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 4rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* === ANELLO STATICO === */
+.ring-base {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 450px;
+  height: 450px;
+  margin: -225px 0 0 -225px;
+  background: url('/assets/images/portal/portal-2.webp') center/contain no-repeat;
+  mix-blend-mode: overlay; /* o overlay */
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* === ANELLO ORBITANTE === */
+.ring-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin: -200px 0 0 -200px;
+  border-radius: 50%;
+  animation: spin 120s linear infinite;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 10px black);
+  opacity: .2;
+  z-index: 2;
+  pointer-events: none;
+  --start-angle: 12deg;
+  animation: spin 120s linear infinite;
+  transform: rotate(var(--start-angle));
+}
+
+@keyframes spin {
+  from { transform: rotate(var(--start-angle)); }
+  to   { transform: rotate(calc(360deg + var(--start-angle))); }
+}
+
+/* === ICONE ORBITANTI === */
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  margin: -150px 0 0 -150px;
+  border-radius: 50%;
+  animation: spin 120s linear infinite;
+  --start-angle: 0deg;
+  z-index: 3;
+}
+
+.slot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-origin: 0 0;
+  transform: rotate(var(--angle)) translateY(-200px);
+  filter: drop-shadow(0 0 10px black)
+}
+
+.icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+  filter: brightness(.9) drop-shadow(0 0 4px rgba(255,255,255,.15));
+  transform: rotate(calc(-1 * var(--angle)));
+  animation: counterspin 120s linear infinite;
+}
+
+@keyframes counterspin {
+  from { transform: rotate(calc(-1 * var(--angle))) rotate(0deg); }
+  to   { transform: rotate(calc(-1 * var(--angle))) rotate(-360deg); }
+}
+
+.archives-portal:hover .icon {
+  filter: brightness(1.25) drop-shadow(0 0 8px rgba(255,180,180,.35));
+}
+
+/* === PULSANTE CENTRALE === */
+.portal-core {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #33030C 0%, #120205 85%);
+  border: 2px solid #5b1720;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(255,190,190,.15);
+  transition: all .4s ease;
+}
+
+.portal-core:hover {
+  transform: scale(1.05);
+  border-color: #e0b0b0;
+  box-shadow: 0 0 25px rgba(255,190,190,.35),
+              0 0 80px rgba(255,200,200,.15) inset;
+}
+
+.sigil {
+  font-family: "IM Fell English", serif;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  text-shadow: 0 0 8px rgba(255,200,200,.35);
+}
+
 
 /* Footer */
 footer {

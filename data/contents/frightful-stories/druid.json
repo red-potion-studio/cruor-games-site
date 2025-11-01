@@ -18,7 +18,7 @@
   ],
   "acts": [
     {
-      "title": "1. Fight or Flee",
+      "title": "<h3 class='scroll-spy-h3'>1. Fight or Flee</h3>",
       "description": "<p>The creatures begin to swarm around the people in the room. Each time one of them touches someone, it leaves a scratch or tears off a small piece of flesh. The swarm is so vast that, if  left to their fate, all NPCs would be devoured in seconds and reduced to a bloody pulp.</p><p>The characters must find a way to escape the room while saving as many people as possible. Use the following clocks to manage the escape progress.</p><p style='margin-left:2rem;'><b>Adventurers’ Clock (white, 3 segments).</b> Whenever the characters succeed in fleeing, rescuing a victim from the demons, or eliminating a large portion of demons, advance one segment.</p><p style='margin-left:2rem;'><b>Enemies’ Clock (black, 3 segments).</b> Every round, advance one segment. Whenever you advance one segment, modify the scenario according to the plot described in the corresponding segment description.</p><p style='margin-left:2rem;'><b><i>Hard Mode.</i></b> All creatures (excluding the aberrant creatures) in the room take 1/3 of their maximum Hit Points as Necrotic damage at the beginning of each round.</p><p style='margin-left:2rem;'><b><i>Brutal Mode.</i></b> Instead of progressing the Enemies’ Clock every round, progress it every turn.</p>",
       "clocks": [
         {
@@ -71,7 +71,7 @@
       ]
     },
     {
-      "title": "2. The Curse",
+      "title": "<h3 class='scroll-spy-h3'>2. The Curse</h3>",
       "description": "<p>As the creatures flee, they cast a curse over the entire village. The characters must find them before the curse exterminates everyone.</p>",
       "clocks": [
         {

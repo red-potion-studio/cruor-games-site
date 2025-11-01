@@ -37,32 +37,31 @@ export function renderFrightfulStory(data) {
     </section>
   `;
 
-  return `
-    <article class="content-article frightful-story">
+return `
+  <article class="content-article frightful-story">
     <div class="article-header frightful-story">
-    <div class="article-header image">
-      <img src="${data.image}" alt="${data.title}" class="content-hero">
-    </div>
-    <div class="article-header text">
-      <h2>${data.title}</h2>  
-      ${plotTable}
-    </div>
+      <div class="article-header image">
+        <img src="${data.image}" alt="${data.title}" class="content-hero">
       </div>
+      <div class="article-header text">
+        <h2>${data.title}</h2>
+        ${plotTable}
+      </div>
+    </div>
 
-      <h2>Story</h2>
-      ${storyHTML}
+    <h2 class="scroll-spy-h2" id="story">Story</h2>
+    ${storyHTML}
 
-      <h2>Acts</h2>
-      ${actsHTML}
+    <h2 class="scroll-spy-h2" id="acts">Acts</h2>
+    ${actsHTML}
 
-      ${endingHTML}
+    <h2 class="scroll-spy-h2" id="ending">Ending</h2>
+    ${endingHTML}
 
-      <div class="tags">${data.tags
-        .map((t) => `<span class="tag">${t}</span>`)
-        .join(" ")}</div>
-      <p class="meta">Written by ${data.author} — ${data.date}</p>
-    </article>
-  `;
+    <div class="tags">${data.tags.map(t => `<span class="tag">${t}</span>`).join(" ")}</div>
+    <p class="meta">Written by ${data.author} — ${data.date}</p>
+  </article>
+`;
 }
 
 function renderClock(clock) {
