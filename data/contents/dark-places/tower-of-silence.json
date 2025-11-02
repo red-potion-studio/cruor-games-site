@@ -105,6 +105,20 @@
       "x": "82%",
       "y": "42%",
       "title": "Dormitory"
+    }, 
+    {
+      "id": "5-storeroom",
+      "label": "5",
+      "x": "82%",
+      "y": "58%",
+      "title": "Storeroom"
+    },
+    {
+      "id": "6-the-tower-of-silence",
+      "label": "6",
+      "x": "45%",
+      "y": "78%",
+      "title": "The Tower of Silence"
     }
   ],
 

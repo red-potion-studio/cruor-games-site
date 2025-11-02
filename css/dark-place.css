@@ -149,7 +149,7 @@ section.collapsible.areas {
 
 .map-zoom-btn {
   background: rgba(0,0,0,0.6);
-  border: 1px solid var(--bordeaux);
+  border: none;
   color: var(--white);
   font-size: 1.1rem;
   line-height: 1;
@@ -160,8 +160,8 @@ section.collapsible.areas {
 }
 
 .map-zoom-btn:hover {
-  background: rgba(91,23,32,0.8);
-  transform: scale(1.05);
+  color: var(--red);
+  transform: scale(1.2);
 }
 
 /* ============================================================
