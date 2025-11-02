@@ -29,8 +29,14 @@
   --white: #fff;
 }
 
+
 html {
   scroll-behavior: smooth;
+}
+@media (max-width: 700px) {
+  html {
+    overflow-x: hidden;
+  }
 }
 
 body {
@@ -68,11 +74,15 @@ header p {
 /* Banner composto con overlay */
 .banner {
   position: relative;
-  background: url('assets/images/banners/banner.webp') center/cover no-repeat;
+  background: url('assets/images/banners/banner.webp') center center / cover no-repeat;
   height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;          /* blocca l’espansione oltre il viewport */
+  max-width: 100vw;     /* previene overflow su mobile */
+  box-sizing: border-box;
+  overflow: hidden;     /* elimina sporgenze grafiche */
 }
 
 .banner::after {
@@ -113,19 +123,42 @@ header p {
   align-items: center;
   justify-content: center;
   padding: 0.3rem 1rem;
-  width: 100dvw;
+  /* il wrapper resta alla sua larghezza di contenuto */
+  width: auto;
+  max-width: 650px; /* o quello che usi già nel media query */
+  margin: 0 auto;
+  z-index: 0;
+  isolation: isolate; /* assicura stacking corretto del :before */
 }
 
 .banner-text-wrap::before {
   content: "";
   position: absolute;
-  top: 47%;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* centra rispetto allo schermo */
+  /* fascia a tutta larghezza schermo, senza overflow mobile */
+  width: 100svw;                  /* viewport “small” stabile su mobile */
+  height: 100%;                   /* alta quanto il wrapper del testo */
   background: var(--bordeaux);
-  transform: translateY(-50%);
-  z-index: -1;
+  z-index: -1;                    /* dietro al testo */
+  pointer-events: none;
+}
+
+.banner-overlay { position: relative; }              /* stacking corretto */
+.banner-text-wrap { isolation: isolate; }            /* il ::before resta sotto al testo */
+
+.banner-text { display:block; max-width:100%; }      /* no overflow immagine */
+picture { display:block; }                           /* niente spazi inline */
+
+
+/* fallback per browser senza svw */
+@supports not (width: 1svw) {
+  .banner-text-wrap::before { width: 100vw; }
+}
+
+@media (min-width:768px){
+  .banner-text-wrap { max-width:650px; margin:0 auto; }
 }
 
 /* Slider */
@@ -141,19 +174,24 @@ header p {
 }
 
 section.slider {
-  padding: 1rem 0 1rem 1rem;
+  padding: 0;
 }
 
 .slider-track {
   display: flex;
   transition: transform 0.8s ease;
   width: 100%;
+  will-change: transform;
 }
 
 .slide {
-  min-width: 100%;
+  flex: 0 0 100%;             /* prende esattamente 100% del track */
   display: flex;
   align-items: stretch;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 .slide-image {
@@ -326,6 +364,7 @@ h3 {
 section.about {
   background: rgba(51, 3, 12, 0.3);
   margin-top: 5rem;
+  width: 90%;
 }
 
 /* Auth */
@@ -396,15 +435,24 @@ section.about {
 #tooltip.item { border-color: #c9c9c9; }
 #tooltip.rule { border-color: #c9c9c9; }
 
-/* === ARCHIVES PORTAL === */
+/* === ARCHIVES PORTAL (final responsive + visual parity) === */
 .archives-portal {
+  --portal-size: min(92vw, 400px);
+  --base-scale: 1.125;      /* ring-base leggermente più grande */
+  --ring-scale: 0.75;       /* diametro dell'anello icone */
+  --ring-size: calc(var(--portal-size) * var(--ring-scale));
+  --ring-radius: calc(var(--portal-size) * 0.5 * 0.95); /* distanza reale dal centro */
+  --icon-size: 80px;
+  --pulse-duration: 6s;
+
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: var(--portal-size);
+  height: var(--portal-size);
   margin: 4rem auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 /* === ANELLO STATICO === */
@@ -412,13 +460,18 @@ section.about {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 450px;
-  height: 450px;
-  margin: -225px 0 0 -225px;
-  background: url('/assets/images/portal/portal-2.webp') center/contain no-repeat;
-  mix-blend-mode: overlay; /* o overlay */
+  width: calc(var(--portal-size) * var(--base-scale));
+  height: calc(var(--portal-size) * var(--base-scale));
+  transform: translate(-50%, -50%) scale(1);
+  transform-origin: center center;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,180,180,.12) 0%, transparent 70%),
+    url('/assets/images/portal/portal-2.webp') center/contain no-repeat;
+  mix-blend-mode: overlay;
   z-index: 1;
   pointer-events: none;
+  filter: drop-shadow(0 0 25px rgba(255,180,180,.15)) brightness(1);
+  animation: pulse-base 10s ease-in-out infinite;
 }
 
 /* === ANELLO ORBITANTE === */
@@ -426,24 +479,19 @@ section.about {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 400px;
-  height: 400px;
-  margin: -200px 0 0 -200px;
+  width: var(--portal-size);
+  height: var(--portal-size);
+  transform: translate(-50%, -50%);
   border-radius: 50%;
+  border: 2px solid rgba(255,190,190,.08);
+  box-shadow:
+    0 0 20px rgba(255,180,180,.15),
+    inset 0 0 25px rgba(255,180,180,.08);
   animation: spin 120s linear infinite;
   mix-blend-mode: screen;
-  filter: drop-shadow(0 0 10px black);
-  opacity: .2;
   z-index: 2;
+  opacity: .25;
   pointer-events: none;
-  --start-angle: 12deg;
-  animation: spin 120s linear infinite;
-  transform: rotate(var(--start-angle));
-}
-
-@keyframes spin {
-  from { transform: rotate(var(--start-angle)); }
-  to   { transform: rotate(calc(360deg + var(--start-angle))); }
 }
 
 /* === ICONE ORBITANTI === */
@@ -451,9 +499,9 @@ section.about {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 300px;
-  height: 300px;
-  margin: -150px 0 0 -150px;
+  width: var(--ring-size);
+  height: var(--ring-size);
+  transform: translate(-50%, -50%);
   border-radius: 50%;
   animation: spin 120s linear infinite;
   --start-angle: 0deg;
@@ -467,27 +515,31 @@ section.about {
   width: 0;
   height: 0;
   transform-origin: 0 0;
-  transform: rotate(var(--angle)) translateY(-200px);
-  filter: drop-shadow(0 0 10px black)
+  transform: rotate(var(--angle)) translateY(calc(-1 * var(--ring-radius)));
+  filter: drop-shadow(0 0 10px black);
 }
 
-.icon {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  display: block;
-  filter: brightness(.9) drop-shadow(0 0 4px rgba(255,255,255,.15));
+/* === CONTRO-ROT. === */
+.icon-rotor {
+  display: inline-block;
   transform: rotate(calc(-1 * var(--angle)));
   animation: counterspin 120s linear infinite;
 }
 
-@keyframes counterspin {
-  from { transform: rotate(calc(-1 * var(--angle))) rotate(0deg); }
-  to   { transform: rotate(calc(-1 * var(--angle))) rotate(-360deg); }
-}
-
-.archives-portal:hover .icon {
-  filter: brightness(1.25) drop-shadow(0 0 8px rgba(255,180,180,.35));
+/* === ICONE === */
+.icon {
+  --shadow-blur: 4px;
+  --shadow-color: rgba(255,255,255,.15);
+  width: var(--icon-size);
+  height: var(--icon-size);
+  object-fit: contain;
+  display: block;
+  opacity: 0.4;
+  filter: brightness(.9) drop-shadow(0 0 var(--shadow-blur) var(--shadow-color));
+  animation:
+    pulse-icon var(--pulse-duration, 5s) ease-in-out infinite;
+  animation-delay: var(--pulse-delay, 0s);
+  will-change: filter, opacity, transform;
 }
 
 /* === PULSANTE CENTRALE === */
@@ -497,8 +549,8 @@ section.about {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 180px;
-  height: 180px;
+  width: calc(var(--portal-size) * 0.45);
+  height: calc(var(--portal-size) * 0.45);
   border-radius: 50%;
   background: radial-gradient(circle at 50% 50%, #33030C 0%, #120205 85%);
   border: 2px solid #5b1720;
@@ -516,6 +568,7 @@ section.about {
               0 0 80px rgba(255,200,200,.15) inset;
 }
 
+/* === TESTO === */
 .sigil {
   font-family: "IM Fell English", serif;
   font-size: 1.2rem;
@@ -523,6 +576,50 @@ section.about {
   letter-spacing: .05em;
   text-transform: uppercase;
   text-shadow: 0 0 8px rgba(255,200,200,.35);
+}
+
+/* === ANIMAZIONI === */
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes counterspin {
+  from { transform: rotate(calc(-1 * var(--angle))) rotate(0deg); }
+  to   { transform: rotate(calc(-1 * var(--angle))) rotate(-360deg); }
+}
+
+/* base “respiro” con glow */
+@keyframes pulse-base {
+  0%,100% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(0.6);
+    filter: drop-shadow(0 0 20px rgba(255,180,180,.15));
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    filter: drop-shadow(0 0 60px rgba(255,180,180,.4));
+  }
+}
+
+/* icone “respiro” e bagliore */
+@keyframes pulse-icon {
+  0%,100% { opacity: 0.4; transform: scale(1); }
+  50%     { opacity: 1;   transform: scale(1.1); }
+}
+
+@keyframes shadowPulse {
+  0%,100% { --shadow-blur: 4px;  --shadow-color: rgba(255,255,255,.15); }
+  50%     { --shadow-blur: 12px; --shadow-color: rgba(255,180,180,.45); }
+}
+
+/* === MOBILE === */
+@media (max-width: 700px) {
+  .archives-portal {
+    --icon-size: 60px;
+    --ring-radius: calc(var(--portal-size) * 0.5 * 0.9);
+  }
 }
 
 .inline-icon {

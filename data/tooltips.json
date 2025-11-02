@@ -18,16 +18,16 @@
     }
   },
   "Spell": {
-    "fireball": {
-      "name": "Fireball",
-      "level": 3,
-      "school": "Evocation",
-      "castTime": "1 action",
-      "range": "150 ft",
-      "target": "Point within range",
-      "components": "V, S, M (a tiny ball of bat guano and sulfur)",
+    "spell-lesser-restoration": {
+      "name": "Lesser Restoration",
+      "level": 2,
+      "school": "Abjuration",
+      "castTime": "1 Action",
+      "range": "Touch",
+      "target": "One Creature",
+      "components": "V, S",
       "duration": "Instantaneous",
-      "description": "A bright streak flashes from your pointing finger to a point you choose..."
+      "description": "You touch a creature and can end either one disease or one condition afflicting it. The condition can be blinded, deafened, paralyzed, or poisoned."
     }
   },
   "Item": {
@@ -38,9 +38,9 @@
     }
   },
   "Rule": {
-    "advantage": {
-      "name": "Advantage",
-      "description": "Roll two d20 and take the higher result."
+    "rule-suffocate": {
+      "name": "Suffocate",
+      "description": "A creature can hold its breath for a number of minutes equal to 1 + its Constitution modifier (minimum of 30 seconds).<br> When a creature runs out of breath or is choking, it can survive for a number of rounds equal to its Constitution modifier (minimum of 1 round).<br> At the start of its next turn, it drops to 0 hit points and is dying, and it can't regain hit points or be stabilized until it can breathe again.<br> For example, a creature with a Constitution of 14 can hold its breath for 3 minutes. If it starts suffocating, it has 2 rounds to reach air before it drops to 0 hit points."
     }
   }
 }

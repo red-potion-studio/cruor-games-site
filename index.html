@@ -50,14 +50,46 @@
 
   <!-- icone orbitanti -->
   <div class="ring">
-    <div class="slot" style="--angle:   0deg;"><img class="icon" src="assets/images/icons/collections/logo-dh.svg" alt="Dangerous Hazards"></div>
-    <div class="slot" style="--angle:  45deg;"><img class="icon" src="assets/images/icons/collections/logo-dp.svg" alt="Dark Places"></div>
-    <div class="slot" style="--angle:  90deg;"><img class="icon" src="assets/images/icons/collections/logo-fs.svg" alt="Frightful Stories"></div>
-    <div class="slot" style="--angle: 135deg;"><img class="icon" src="assets/images/icons/collections/logo-gf.svg" alt="Gruesome Features"></div>
-    <div class="slot" style="--angle: 180deg;"><img class="icon" src="assets/images/icons/collections/logo-hs.svg" alt="Horrifying Spells"></div>
-    <div class="slot" style="--angle: 225deg;"><img class="icon" src="assets/images/icons/collections/logo-mi.svg" alt="Malicious Items"></div>
-    <div class="slot" style="--angle: 270deg;"><img class="icon" src="assets/images/icons/collections/logo-tm.svg" alt="Terrifying Monsters"></div>
-    <div class="slot" style="--angle: 315deg;"><img class="icon" src="assets/images/icons/collections/logo-tc.svg" alt="Twisted Characters"></div>
+    <div class="slot" style="--angle:   0deg;">
+      <span class="icon-rotor">
+        <img class="icon" src="assets/images/icons/collections/logo-dh.svg" alt="Dangerous Hazards">
+      </span>
+    </div>
+    <div class="slot" style="--angle:  45deg;">
+      <span class="icon-rotor">
+        <img class="icon" src="assets/images/icons/collections/logo-dp.svg" alt="Dark Places">
+      </span>
+    </div>
+    <div class="slot" style="--angle:  90deg;">
+      <span class="icon-rotor">
+        <img class="icon" src="assets/images/icons/collections/logo-fs.svg" alt="Frightful Stories">
+      </span>
+    </div>
+    <div class="slot" style="--angle: 135deg;">
+      <span class="icon-rotor">
+        <img class="icon" src="assets/images/icons/collections/logo-gf.svg" alt="Gruesome Features">
+      </span>
+    </div>
+    <div class="slot" style="--angle: 180deg;">
+      <span class="icon-rotor">
+        <img class="icon" src="assets/images/icons/collections/logo-hs.svg" alt="Horrifying Spells">
+      </span>
+    </div>
+    <div class="slot" style="--angle: 225deg;">
+      <span class="icon-rotor">
+        <img class="icon" src="assets/images/icons/collections/logo-mi.svg" alt="Malicious Items">
+      </span>
+    </div>
+    <div class="slot" style="--angle: 270deg;">
+      <span class="icon-rotor">
+        <img class="icon" src="assets/images/icons/collections/logo-tm.svg" alt="Terrifying Monsters">
+      </span>
+    </div>
+    <div class="slot" style="--angle: 315deg;">
+      <span class="icon-rotor">
+        <img class="icon" src="assets/images/icons/collections/logo-tc.svg" alt="Twisted Characters">
+      </span>
+    </div>
   </div>
 
   <!-- pulsante centrale -->
@@ -66,12 +98,15 @@
   </a>
 </section>
 
-  <footer>© 2025 Cruor Games. All rights reserved.</footer>
+<footer>© 2025 Cruor Games. All rights reserved.</footer>
 
   <script>
-    function loginPatreon() {
-      window.location.href = "https://www.patreon.com/oauth2/authorize";
-    }
+    document.querySelectorAll('.icon').forEach(icon => {
+  const duration = (2 + Math.random() * 3).toFixed(2) + 's'; // 2–5 s
+  const delay = (Math.random() * 3).toFixed(2) + 's';         // 0–3 s
+  icon.style.setProperty('--pulse-duration', duration);
+  icon.style.setProperty('--pulse-delay', delay);
+});
   </script>
 
   <script src="scripts/slider.js"></script>

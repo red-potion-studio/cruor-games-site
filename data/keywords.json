@@ -1,0 +1,52 @@
+[
+  {
+    "keyword": "Strength Saving Throw",
+    "color": "#BD3737",
+    "icon": ""
+  },
+  {
+    "keyword": "Dexterity Saving Throw",
+    "color": "#47BD37",
+    "icon": ""
+  },
+  {
+    "keyword": "Constitution Saving Throw",
+    "color": "#BD7C37",
+    "icon": ""
+  },
+  {
+    "keyword": "Intelligence Saving Throw",
+    "color": "#378EBD",
+    "icon": ""
+  },
+  {
+    "keyword": "Wisdom Saving Throw",
+    "color": "#8759C2",
+    "icon": ""
+  },
+  {
+    "keyword": "Charisma Saving Throw",
+    "color": "#C45EBC",
+    "icon": ""
+  },
+  {
+    "keyword": "Bludgeoning",
+    "color": "#BFBFBF",
+    "icon": ""
+  },
+  {
+    "keyword": "Piercing",
+    "color": "#BFBFBF",
+    "icon": ""
+  },
+  {
+    "keyword": "Slashing",
+    "color": "#BFBFBF",
+    "icon": ""
+  },
+  {
+    "keyword": "Necrotic",
+    "color": "#4DC9AB",
+    "icon": ""
+  }
+]
