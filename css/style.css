@@ -24,9 +24,43 @@
 }
 
 :root {
+  /* Reds */
   --bordeaux: #33030C;
+  --bordeaux-2: #660819;
+  --red: #a30f2a;
+
+  /* Whites */
+  --white: #f5f5f5;
+  --white-2: #ccc;
+
+  /* Blacks */
   --black: #000;
-  --white: #fff;
+
+  /* Grays */
+  --gray: #888;
+  --dark-grey: #0a0a0a;
+
+  /* Difficulties */
+  --easy: #4b9e60;
+  --normal: #afad49;
+  --hard: #ac7243;
+  --deadly: #b13d3d;
+
+  /* Constant colors */
+  --always-black: #000;
+  --always-white: #f5f5f5;
+  --always-gray: #888;
+
+  /* Specific Colors Variants */
+  --bordeaux-to-white: #33030C;
+
+  /* RGBs */
+  --bordeaux-rgb: 51, 3, 12;
+  --bordeaux-2-rgb: 102, 8, 25;
+  --red-rgb: 163, 15, 42;
+  --black-rgb: 0, 0, 0;
+
+  --bordeaux-to-white-rgb: 51, 3, 12;
 }
 
 
@@ -48,6 +82,21 @@ body {
   overflow-x: hidden;
 }
 
+/* Tema leggibile per alta leggibilità */
+body.accessible-theme {
+  --black: #f5f5f5;
+  --white: #0a0a0a;
+  --white-2: #222222;
+  --gray: #222;
+  --bordeaux-to-white: #f5f5f5;
+  --black-rgb: 245, 245, 245;
+  --white-rgb: 10, 10, 10;
+  --gray-rgb: 34, 34, 34;
+  --bordeaux-to-white-rgb: 245, 245, 245;
+  background: var(--black);
+  color: var(--white);
+}
+
 /* Header */
 header {
   background: var(--bordeaux);
@@ -60,15 +109,39 @@ header h1.logo-text {
   font-size: 3rem;
   letter-spacing: 0.08em;
   margin: 0 0 .25rem 0;
-  color: var(--white);
+  color: var(--always-white);
   font-weight: 100;
   text-transform: uppercase;
 }
 
 header p {
   font-family: Montserrat, Inter, sans-serif;
+  color: var(--always-white);
   margin: 0;
   opacity: .9;
+}
+
+header .back-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--white);
+  background: var(--bordeaux);
+  border: 1px solid var(--bordeaux);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+header .back-btn:hover {
+  background: #55061a;
+}
+
+header .back-btn:active {
+  transform: scale(0.96);
 }
 
 /* Banner composto con overlay */
@@ -338,7 +411,7 @@ section.slider {
 
 /* Sezioni */
 section {
-  padding: 2rem 1rem;
+  padding: .5rem 1rem;
   width: 100%;
   margin: 0 auto;
 }

@@ -3,7 +3,7 @@
 ============================================================ */
 .areas {
   position: relative;
-  margin-top: 2rem;
+  margin-top: 0;
   padding-bottom: 2rem;
 }
 
@@ -14,9 +14,13 @@
   margin-top: 1rem;
 }
 
+section.collapsible.areas {
+    padding-bottom: 0;
+}
+
 .area {
   margin-bottom: 1.2rem;
-  padding: 0.5rem 1.5rem 1rem;
+  padding: 0.5rem 1.5rem 1rem 0;
 }
 
 .area h3 {
@@ -26,7 +30,6 @@
 
 .area p {
   margin: 0;
-  line-height: 1.4;
 }
 
 /* ============================================================
@@ -55,8 +58,8 @@
     flex: 0 0 55%;
     max-width: 480px;
     background: var(--black);
-    border: 1px solid var(--bordeaux);
-    border-radius: 15px;
+    border: 2px solid var(--bordeaux);
+    border-radius: 10px;
     padding: 20px;
     align-self: flex-start;
     position: sticky;
@@ -64,7 +67,7 @@
     margin: 40px -300px 0 0;
     height: fit-content;
     z-index: 1;
-    box-shadow: 0 0 20px black;
+    box-shadow: 0 0 20px var(--bordeaux);
   }
 
   .map-image {

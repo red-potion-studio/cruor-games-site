@@ -16,7 +16,7 @@ export function renderDarkPlace(data) {
 
   const characteristicsHTML = data.characteristics
     ? `
-    <section class="characteristics">
+    <section class="collapsible characteristics">
       <h2 class="scroll-spy-h2" id="characteristics">Characteristics</h2>
       ${data.characteristics.map((c) => `<p>${c}</p>`).join("")}
     </section>
@@ -25,7 +25,7 @@ export function renderDarkPlace(data) {
 
   const areasHTML = data.areas
     ? `
-    <section class="areas">
+    <section class="collapsible areas">
       <h2 class="scroll-spy-h2" id="areas">Areas</h2>
       <div class="areas-layout">
         <div class="areas-list">
@@ -87,7 +87,7 @@ export function renderDarkPlace(data) {
 
   const curioHTML = data.curio
     ? `
-    <section class="curio">
+    <section class="collapsible curio">
       <h2 class="scroll-spy-h2" id="curio">Curio</h2>
       <p>${data.curio}</p>
     </section>
@@ -96,7 +96,7 @@ export function renderDarkPlace(data) {
 
   const encountersHTML = data.encounters
     ? `
-    <section class="encounters">
+    <section class="collapsible encounters">
       <h2 class="scroll-spy-h2" id="encounters">Encounters</h2>
       ${
         data.encounters.description
@@ -112,7 +112,7 @@ export function renderDarkPlace(data) {
 
   const hazardsHTML = data.hazards
     ? `
-    <section class="hazards">
+    <section class="collapsible hazards">
       <h2 class="scroll-spy-h2" id="hazards">Hazards</h2>
       ${data.hazards.map((h) => `<p>${h}</p>`).join("")}
     </section>
@@ -121,7 +121,7 @@ export function renderDarkPlace(data) {
 
   const treasuresHTML = data.treasures
     ? `
-    <section class="treasures">
+    <section class="collapsible treasures">
       <h2 class="scroll-spy-h2" id="treasures">Treasures</h2>
       ${
         data.treasures.description ? `<p>${data.treasures.description}</p>` : ""

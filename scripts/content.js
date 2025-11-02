@@ -31,7 +31,8 @@ function renderContent(data) {
   }
 
   symbolizeSpans();
-  initSidebarTools(); // <-- aggiunto
+  initSidebarTools();
+  initCollapsibles();
 }
 
 function loadStyleForType(type) {
@@ -89,6 +90,48 @@ function initSidebarTools() {
   });
 }
 
+/* ---------------------------------------------------
+   Collapsible Sections
+--------------------------------------------------- */
+function initCollapsibles() {
+  document.querySelectorAll("section.collapsible").forEach(section => {
+    const header = section.querySelector("h2");
+    const content = Array.from(section.children).filter(el => el !== header);
+    if (!header || !content.length) return;
+
+    // Crea wrapper per animazione
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("collapse-wrapper");
+    content.forEach(el => wrapper.appendChild(el));
+    section.appendChild(wrapper);
+
+    // Inizializzazione asincrona per attendere il layout completo
+    requestAnimationFrame(() => {
+      wrapper.style.maxHeight = wrapper.scrollHeight + "px";
+    });
+
+    header.addEventListener("click", () => {
+      const isCollapsed = section.classList.toggle("collapsed");
+      header.classList.toggle("collapsed", isCollapsed);
+
+      if (isCollapsed) {
+        wrapper.style.maxHeight = wrapper.scrollHeight + "px";
+        wrapper.offsetHeight; // forza reflow
+        wrapper.style.maxHeight = "0";
+        wrapper.style.opacity = "0";
+      } else {
+        wrapper.style.maxHeight = wrapper.scrollHeight + "px";
+        wrapper.style.opacity = "1";
+        wrapper.addEventListener(
+          "transitionend",
+          () => (wrapper.style.maxHeight = "none"),
+          { once: true }
+        );
+      }
+    });
+  });
+}
+
 async function highlightKeywords(jsonUrl) {
   const res = await fetch(jsonUrl);
   const keywords = await res.json();
@@ -134,6 +177,80 @@ async function highlightKeywords(jsonUrl) {
 function removeHighlights() {
   document.querySelectorAll(".highlighted-word").forEach((el) => {
     el.outerHTML = el.textContent.trim();
+  });
+}
+
+document.getElementById("toggleAccessibility").addEventListener("click", () => {
+  const btn = document.getElementById("toggleAccessibility");
+  const body = document.body;
+
+  body.classList.toggle("accessible-theme");
+  btn.classList.toggle("active", body.classList.contains("accessible-theme"));
+
+  // Salva preferenza
+  localStorage.setItem(
+    "accessibleTheme",
+    body.classList.contains("accessible-theme")
+  );
+});
+
+// Ripristina preferenza all’avvio
+if (localStorage.getItem("accessibleTheme") === "true") {
+  document.body.classList.add("accessible-theme");
+  document.getElementById("toggleAccessibility")?.classList.add("active");
+}
+
+// === Line Spacing Slider ===
+const spacingSlider = document.getElementById("lineSpacingSlider");
+if (spacingSlider) {
+  // imposta il valore iniziale da localStorage
+  const savedSpacing = localStorage.getItem("lineSpacing");
+  if (savedSpacing) {
+    document.body.style.setProperty("--line-height", savedSpacing);
+    spacingSlider.value = savedSpacing;
+    applyLineSpacing(savedSpacing);
+  }
+
+  spacingSlider.addEventListener("input", e => {
+    const value = parseFloat(e.target.value).toFixed(1);
+    applyLineSpacing(value);
+    localStorage.setItem("lineSpacing", value);
+  });
+}
+
+function applyLineSpacing(value) {
+  document.querySelectorAll("p, li, .content-article").forEach(el => {
+    el.style.lineHeight = value;
+  });
+}
+
+// === Notes Drawer ===
+const notesBtn = document.getElementById("toggleNotes");
+const notesDrawer = document.getElementById("notesDrawer");
+const notesArea = document.getElementById("notesArea");
+const clearBtn = document.getElementById("clearNotes");
+
+// apri/chiudi
+if (notesBtn && notesDrawer) {
+  notesBtn.addEventListener("click", () => {
+    notesDrawer.classList.toggle("active");
+    notesBtn.classList.toggle("active", notesDrawer.classList.contains("active"));
+  });
+}
+
+// carica note salvate
+if (notesArea) {
+  notesArea.value = localStorage.getItem("userNotes") || "";
+  notesArea.addEventListener("input", () => {
+    localStorage.setItem("userNotes", notesArea.value);
+  });
+}
+
+// pulisci note
+if (clearBtn) {
+  clearBtn.addEventListener("click", () => {
+    notesArea.value = "";
+    localStorage.removeItem("userNotes");
   });
 }
 

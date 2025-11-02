@@ -8,12 +8,14 @@
   <title>Cruor Games Content</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/content.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
   <header>
     <h1 class="logo-text">Cruor Games</h1>
     <p>Dark Fantasy Homebrew Content</p>
+    <a href="library.html" class="back-btn">← Back to Library</a>
   </header>
 
   <main id="content-container" class="content-page">
@@ -29,6 +31,20 @@
   <!-- Sidebar -->
   <aside id="sidebar">
     <button id="toggleHighlight" class="tool-btn">Keyword Highlighter</button>
+    <button id="toggleAccessibility" class="tool-btn">Readable Theme</button>
+    <!-- Line Spacing -->
+    <div class="tool-group">
+      <label for="lineSpacingSlider">Line Spacing</label>
+      <input type="range" id="lineSpacingSlider" min="1" max="2" step="0.1" value="1.6">
+    </div>
+
+    <!-- Notes Drawer -->
+    <button id="toggleNotes" class="tool-btn">Notes</button>
+    <div id="notesDrawer">
+      <textarea id="notesArea" placeholder="Write your notes here..."></textarea>
+      <button id="clearNotes" class="tool-btn small">Clear</button>
+    </div>
+
   </aside>
 
   <footer>© 2025 Cruor Games. All rights reserved.</footer>
