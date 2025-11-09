@@ -120,17 +120,18 @@ function initMonsterTabs() {
 --------------------------------------------------- */
 function initCollapsibles() {
   document.querySelectorAll("section.collapsible").forEach((section) => {
+    // Evita di creare più wrapper
+    if (section.querySelector(".collapse-wrapper")) return;
+
     const header = section.querySelector("h2");
     const content = Array.from(section.children).filter((el) => el !== header);
     if (!header || !content.length) return;
 
-    // Crea wrapper per animazione
     const wrapper = document.createElement("div");
     wrapper.classList.add("collapse-wrapper");
     content.forEach((el) => wrapper.appendChild(el));
     section.appendChild(wrapper);
 
-    // Inizializzazione asincrona per attendere il layout completo
     requestAnimationFrame(() => {
       wrapper.style.maxHeight = wrapper.scrollHeight + "px";
     });
