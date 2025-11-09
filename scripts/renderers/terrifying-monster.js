@@ -210,22 +210,19 @@ function renderAbilityGrid(abilities) {
               if (!a) return "";
               return `
                 <div class="ability-cell">
-                  <div class="pair">
-                    <span class="label-placeholder">MOD</span>
-                    <div class="inner">
+                  <div class="label-row">
+                    <span class="empty"></span>
+                    <span class="label mod-label">MOD</span>
+                    <span class="label save-label">SAVE</span>
+                  </div>
+                  <div class="value-row">
+                    <div class="pair">
                       <span class="abbr">${abbr}</span>
                       <span class="val">${a.value}</span>
                     </div>
-                  </div>
-                  <div class="mod-block">
-                    <span class="label">MOD</span>
                     <span class="mod">${a.mod}</span>
-                  </div>
-                  <div class="save-block">
-                    <span class="label">SAVE</span>
                     <span class="save">${a.save}</span>
                   </div>
-                  <div class="spacer"></div>
                 </div>`;
             })
             .join("")}

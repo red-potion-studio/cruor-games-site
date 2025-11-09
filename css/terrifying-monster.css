@@ -41,44 +41,59 @@
 
 .ability-cell {
   flex: 1;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--bordeaux);
+  border-radius: 8px;
+  padding: 0.5rem 0.6rem;
+}
+
+/* Riga etichette: 3 colonne (vuoto, MOD, SAVE) */
+.label-row {
   display: grid;
-  grid-template-columns: 1fr 0.5fr 0.5fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  margin-bottom: 0.2rem;
+}
+
+.label-row .empty {
+  /* solo placeholder, niente testo */
+}
+
+.label-row .label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.mod-label {
+  color: var(--muted);
+}
+
+.save-label {
+  color: #69b6ff;
+}
+
+/* Riga valori: 3 colonne (STR 13, +mod, +save) */
+.value-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: baseline; /* tutti i numeri sulla stessa riga */
   text-align: center;
 }
 
-/* Prima colonna: STR e numero allineati alla base */
+/* Prima colonna: STR 13 */
 .pair {
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-  justify-content: flex-end;
-  height: 100%;
-}
-
-.spacer {
-  width: 100%;
-  height: 100%;
-  background: transparent;
-}
-
-.pair .label-placeholder {
-  visibility: hidden;
-  font-size: 0.65rem;
-  line-height: 1;
-  margin-bottom: 0.15rem;
-}
-
-.pair .inner {
-  display: flex;
-  align-items: baseline;
+  display: inline-flex;
   justify-content: center;
-  gap: 1rem;
+  align-items: baseline;
+  gap: 0.25rem;
 }
 
 .pair .abbr {
   color: var(--ancient-gold);
   font-weight: 700;
   font-size: 1rem;
+  line-height: 1;
 }
 
 .pair .val {
@@ -88,32 +103,7 @@
   line-height: 1;
 }
 
-/* Colonne MOD e SAVE */
-.mod-block,
-.save-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  height: 100%;
-}
-
-.mod-block .label {
-  color: var(--muted);
-  font-size: 0.65rem;
-  font-weight: 600;
-  line-height: 1;
-  margin-bottom: 0.15rem;
-}
-
-.save-block .label {
-  color: #69b6ff;
-  font-size: 0.65rem;
-  font-weight: 600;
-  line-height: 1;
-  margin-bottom: 0.15rem;
-}
-
+/* Seconda e terza colonna: MOD e SAVE */
 .mod {
   color: #9fdc6f;
   font-weight: 600;
