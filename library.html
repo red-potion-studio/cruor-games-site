@@ -1,6 +1,7 @@
 <!-- v2.2 2025-10-30T10:45:00Z -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,27 +9,60 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/library.css" />
 </head>
+
 <body>
   <header class="library-header">
     <h1>Cruor Games Library</h1>
     <p>Browse dark fantasy homebrew creations</p>
     <a href="index.html" class="back-btn">← Back to Home Page</a>
-    <div class="search-bar">
-      <input type="text" id="search-input" placeholder="Search by name or tag...">
+
+    <div class="filter-bar">
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search by name or tag...">
+      </div>
+
+      <div class="sort-bar">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select">
+          <option value="az">A–Z</option>
+          <option value="za">Z–A</option>
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="category">Category</option>
+        </select>
+      </div>
+
+      <div class="items-bar">
+        <label for="items-select">Items per page:</label>
+        <select id="items-select">
+          <option value="6">6</option>
+          <option value="12">12</option>
+          <option value="24" selected>24</option>
+          <option value="48">48</option>
+        </select>
+      </div>
+
     </div>
 
     <div id="category-filters" class="category-filters"></div>
   </header>
 
   <main id="library-container" class="library-grid"></main>
+  <div id="pagination" class="pagination"></div>
+
 
   <footer>© 2025 Cruor Games. All rights reserved.</footer>
 
   <script src="scripts/library.js"></script>
   <script src="scripts/tooltips.js"></script>
-<script>
-  Tooltips.init();
-</script>
+  <script>
+    Tooltips.init();
+  </script>
+
+  <!-- Page transition -->
+  <div id="page-transition" class="visible"></div>
+  <script src="/scripts/page-transition.js"></script>
 
 </body>
+
 </html>

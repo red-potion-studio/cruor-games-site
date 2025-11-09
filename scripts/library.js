@@ -2,10 +2,16 @@
 const libraryContainer = document.getElementById("library-container");
 const searchInput = document.getElementById("search-input");
 const categoryFilters = document.getElementById("category-filters");
+const sortSelect = document.getElementById("sort-select");
+const itemsSelect = document.getElementById("items-select");
 
 let contents = [];
 let categories = [];
 let activeFilters = new Set();
+let currentSort = "az";
+let currentPage = 1;
+let filteredResults = [];
+let ITEMS_PER_PAGE = parseInt(itemsSelect.value, 10);
 
 /* --- LOAD DATA --- */
 async function loadLibrary() {
@@ -15,7 +21,8 @@ async function loadLibrary() {
     contents = data.contents;
     categories = data.categories;
     renderFilters();
-    renderLibrary(contents);
+    filteredResults = contents;
+    renderPage();
   } catch (err) {
     libraryContainer.innerHTML = `<p class="muted">Error loading library.</p>`;
     console.error(err);
@@ -61,6 +68,7 @@ function renderLibrary(list) {
       const cat = categories.find((c) => c.id === item.category);
       const catName = cat ? cat.name : "Unknown";
       const catIcon = cat ? cat.icon : "";
+      const newClass = item.isNew ? " card-new" : "";
       const tags = item.tags
         ? item.tags
             .map(
@@ -72,12 +80,12 @@ function renderLibrary(list) {
       const premiumClass = item.premium ? "premium" : "";
 
 return `
-  <div class="card ${premiumClass}" 
+  <div class="card ${premiumClass}${newClass}" 
        data-title="${item.title.toLowerCase()}"
        data-tags="${item.tags.join(",").toLowerCase()}"
        data-category="${item.category.toLowerCase()}">
     <div class="card-inner">
-
+      ${ item.isNew ? `<div class="ribbon"><span>NEW</span></div>` : "" }
       <!-- FRONT -->
       <div class="card-front" style="background-image:url('${item.image}')">
         <div class="card-front-content">
@@ -138,7 +146,7 @@ document.querySelectorAll(".content-btn").forEach((btn) => {
 /* --- FILTERING --- */
 function applyFilters() {
   const query = searchInput.value.toLowerCase().trim();
-  const filtered = contents.filter((c) => {
+  let filtered = contents.filter((c) => {
     const matchesText =
       c.title.toLowerCase().includes(query) ||
       c.tags.some((t) => t.toLowerCase().includes(query));
@@ -146,9 +154,69 @@ function applyFilters() {
       activeFilters.size === 0 || activeFilters.has(c.category);
     return matchesText && matchesCategory;
   });
-  renderLibrary(filtered);
+
+  filtered.sort((a, b) => {
+    switch (currentSort) {
+      case "az": return a.title.localeCompare(b.title);
+      case "za": return b.title.localeCompare(a.title);
+      case "newest": return new Date(b.date) - new Date(a.date);
+      case "oldest": return new Date(a.date) - new Date(b.date);
+      case "category": return a.category.localeCompare(b.category);
+      default: return 0;
+    }
+  });
+
+  filteredResults = filtered;
+  currentPage = 1;
+  renderPage();
+}
+
+function renderPage() {
+  const start = (currentPage - 1) * ITEMS_PER_PAGE;
+  const end = start + ITEMS_PER_PAGE;
+  const pageItems = filteredResults.slice(start, end);
+
+  renderLibrary(pageItems);
+  renderPagination();
+}
+
+function renderPagination() {
+  const totalPages = Math.ceil(filteredResults.length / ITEMS_PER_PAGE);
+  const pagination = document.getElementById("pagination");
+  if (!pagination) return;
+
+  if (totalPages <= 1) {
+    pagination.innerHTML = "";
+    return;
+  }
+
+  let buttons = "";
+  for (let i = 1; i <= totalPages; i++) {
+    buttons += `<button class="page-btn ${i === currentPage ? "active" : ""}" data-page="${i}">${i}</button>`;
+  }
+  pagination.innerHTML = buttons;
+
+  document.querySelectorAll(".page-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      currentPage = Number(e.target.dataset.page);
+      renderPage();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
 }
 
 /* --- INIT --- */
 searchInput.addEventListener("input", applyFilters);
+
+sortSelect.addEventListener("change", () => {
+  currentSort = sortSelect.value;
+  applyFilters();
+});
+
+itemsSelect.addEventListener("change", () => {
+  ITEMS_PER_PAGE = parseInt(itemsSelect.value, 10);
+  currentPage = 1;
+  renderPage();
+});
+
 loadLibrary();

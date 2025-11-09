@@ -1,0 +1,190 @@
+/* v1.0 2025-11-09T12:00:00Z */
+
+/* === Layout generale === */
+.content-article.terrifying-monster {
+  padding-bottom: 2rem;
+}
+
+.article-header.monster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.article-header.monster img.content-hero {
+  width: 350px;
+  max-width: 100%;
+  border: 2px solid var(--bordeaux);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+.article-header.monster h1 {
+  color: var(--bordeaux);
+  margin-bottom: 0.5rem;
+}
+
+/* === Statblock === */
+.ability-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.ability-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.ability-cell {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 0.5fr 0.5fr 1fr;
+  text-align: center;
+}
+
+/* Prima colonna: STR e numero allineati alla base */
+.pair {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.spacer {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.pair .label-placeholder {
+  visibility: hidden;
+  font-size: 0.65rem;
+  line-height: 1;
+  margin-bottom: 0.15rem;
+}
+
+.pair .inner {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.pair .abbr {
+  color: var(--ancient-gold);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.pair .val {
+  color: var(--white);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Colonne MOD e SAVE */
+.mod-block,
+.save-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.mod-block .label {
+  color: var(--muted);
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 0.15rem;
+}
+
+.save-block .label {
+  color: #69b6ff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 0.15rem;
+}
+
+.mod {
+  color: #9fdc6f;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.save {
+  color: #69b6ff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+/* === Sections === */
+.monster-traits p,
+.monster-actions p,
+.monster-lore p {
+  margin-bottom: 0.6rem;
+  line-height: 1.6;
+}
+
+.monster-statblock th {
+  text-align: left;
+}
+
+/* === Loot === */
+.monster-loot .generic-table {
+  margin-top: 0.6rem;
+}
+
+/* --- variant tabs --- */
+.variant-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  border-bottom: 2px solid var(--bordeaux);
+  flex-wrap: wrap;
+}
+
+.variant-tab {
+  background: none;
+  border: none;
+  color: var(--grey);
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.variant-tab.active {
+  background: var(--bordeaux);
+  color: var(--white);
+  font-weight: 600;
+}
+
+.variant-content { display: none; }
+.variant-content.active { display: block; }
+
+/* optional smooth fade */
+.variant-content { animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.variant-tab .variant-info {
+  margin-left: 6px;
+  font-size: 0.8em;
+  opacity: 0.7;
+  cursor: help;
+}
+.variant-tab .variant-info:hover {
+  opacity: 1;
+}

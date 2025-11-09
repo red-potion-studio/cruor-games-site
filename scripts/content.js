@@ -1,10 +1,12 @@
 /* v1.8 2025-11-02T12:00:00Z */
 import { renderDarkPlace, initMapMarkers } from "./renderers/dark-place.js";
 import { renderFrightfulStory } from "./renderers/frightful-story.js";
+import { renderTerrifyingMonster } from "./renderers/terrifying-monster.js";
 
 const renderers = {
   "dark-place": renderDarkPlace,
   "frightful-story": renderFrightfulStory,
+  "terrifying-monster": renderTerrifyingMonster,
 };
 
 async function loadContent() {
@@ -28,6 +30,10 @@ function renderContent(data) {
   if (data.type === "dark-place") {
     initMapMarkers();
     Tooltips.refresh();
+  }
+
+  if (data.type === "terrifying-monster") {
+    initMonsterTabs();
   }
 
   symbolizeSpans();
@@ -90,19 +96,38 @@ function initSidebarTools() {
   });
 }
 
+/* --- Monster variant tabs --- */
+function initMonsterTabs() {
+  const tabs = document.querySelectorAll(".variant-tab");
+  const contents = document.querySelectorAll(".variant-content");
+  if (!tabs.length || !contents.length) return;
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const idx = tab.dataset.index;
+      tabs.forEach((t) => t.classList.remove("active"));
+      contents.forEach((c) => c.classList.remove("active"));
+      tab.classList.add("active");
+      document
+        .querySelector(`.variant-content[data-index="${idx}"]`)
+        ?.classList.add("active");
+    });
+  });
+}
+
 /* ---------------------------------------------------
    Collapsible Sections
 --------------------------------------------------- */
 function initCollapsibles() {
-  document.querySelectorAll("section.collapsible").forEach(section => {
+  document.querySelectorAll("section.collapsible").forEach((section) => {
     const header = section.querySelector("h2");
-    const content = Array.from(section.children).filter(el => el !== header);
+    const content = Array.from(section.children).filter((el) => el !== header);
     if (!header || !content.length) return;
 
     // Crea wrapper per animazione
     const wrapper = document.createElement("div");
     wrapper.classList.add("collapse-wrapper");
-    content.forEach(el => wrapper.appendChild(el));
+    content.forEach((el) => wrapper.appendChild(el));
     section.appendChild(wrapper);
 
     // Inizializzazione asincrona per attendere il layout completo
@@ -211,7 +236,7 @@ if (spacingSlider) {
     applyLineSpacing(savedSpacing);
   }
 
-  spacingSlider.addEventListener("input", e => {
+  spacingSlider.addEventListener("input", (e) => {
     const value = parseFloat(e.target.value).toFixed(1);
     applyLineSpacing(value);
     localStorage.setItem("lineSpacing", value);
@@ -219,7 +244,7 @@ if (spacingSlider) {
 }
 
 function applyLineSpacing(value) {
-  document.querySelectorAll("p, li, .content-article").forEach(el => {
+  document.querySelectorAll("p, li, .content-article").forEach((el) => {
     el.style.lineHeight = value;
   });
 }
@@ -234,7 +259,10 @@ const clearBtn = document.getElementById("clearNotes");
 if (notesBtn && notesDrawer) {
   notesBtn.addEventListener("click", () => {
     notesDrawer.classList.toggle("active");
-    notesBtn.classList.toggle("active", notesDrawer.classList.contains("active"));
+    notesBtn.classList.toggle(
+      "active",
+      notesDrawer.classList.contains("active")
+    );
   });
 }
 

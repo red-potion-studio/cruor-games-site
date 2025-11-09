@@ -19,8 +19,9 @@
   color: var(--grey);
 }
 .search-bar {
-  margin: 1rem auto 0.5rem;
-  max-width: 400px;
+  margin: 0;
+  max-width: 300px;
+  flex: 1;
 }
 .search-bar input {
   width: 100%;
@@ -33,6 +34,29 @@
   font-family: "Inter", sans-serif;
 }
 .search-bar input:focus { outline: 1px solid var(--grey); }
+
+/* ===== SORT BAR ===== */
+.sort-bar {
+  margin: 0 0 0 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.sort-bar select {
+  background: #111;
+  color: var(--always-white);
+  border: 1px solid var(--bordeaux);
+  border-radius: 4px;
+  padding: 0.6rem;
+}
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
 
 /* ===== CATEGORY FILTER ICONS ===== */
 .category-filters {
@@ -63,6 +87,40 @@
   margin: auto;
 }
 
+/* ===== PAGINATION ===== */
+.pagination {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+.page-btn {
+  background: #111;
+  color: var(--always-white);
+  border: 1px solid var(--bordeaux);
+  border-radius: 4px;
+  padding: 0.4rem 0.7rem;
+  margin: 0 0.2rem;
+  cursor: pointer;
+}
+.page-btn.active {
+  background: var(--bordeaux);
+  color: #fff;
+}
+
+.items-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.items-bar select {
+  background: #111;
+  color: var(--always-white);
+  border: 1px solid var(--bordeaux);
+  border-radius: 6px;
+  padding: 0.6rem;
+}
+
+
 /* ===== CARD ===== */
 .card {
   perspective: 1000px;
@@ -71,6 +129,37 @@
   box-sizing: border-box;
   filter: drop-shadow(2px 4px 10px rgba(0,0,0,0.75));
   border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card .ribbon {
+  position: absolute;
+  top: 12px;
+  right: -40px;
+  width: 120px;
+  text-align: center;
+  transform: rotate(45deg);
+  background: var(--bordeaux);
+  color: #fff;
+  font-size: 0.8rem;
+  font-family: "Inter", sans-serif;
+  padding: 4px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card .ribbon span {
+  display: block;
+  transform: none;
+}
+
+.card.flipped .ribbon {
+  opacity: 0;
 }
 
 /* ===== CARD INNER ===== */
@@ -218,6 +307,7 @@
   flex-grow: 1;
   padding: 1rem;
   text-align: center;
+  gap: 1rem;
 }
 
 .card-back-content p {

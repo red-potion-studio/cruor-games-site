@@ -1,0 +1,235 @@
+{
+  "id": "bloated-zombie",
+  "title": "Bloated",
+  "type": "terrifying-monster",
+  "image": "assets/images/monsters/bloated.webp",
+  "hasLair": false,
+
+  "variants": [
+    {
+      "name": "Bloated Zombie",
+      "stats": {
+        "size": "Medium",
+        "type": "Undead (Zombie)",
+        "alignment": "Neutral Evil",
+        "ac": "8 (natural decay)",
+        "hp": "22 (3d8 + 9)",
+        "speed": "20 ft.",
+        "challenge": "1/2 (100 XP; PB +2)"
+      },
+      "abilities": {
+        "STR": { "value": 13, "mod": "+1", "save": "+1" },
+        "DEX": { "value": 6, "mod": "−2", "save": "−2" },
+        "CON": { "value": 16, "mod": "+3", "save": "+3" },
+        "INT": { "value": 3, "mod": "−4", "save": "−4" },
+        "WIS": { "value": 6, "mod": "−2", "save": "−2" },
+        "CHA": { "value": 5, "mod": "−3", "save": "−3" }
+      },
+      "traits": [
+        { "name": "Gas Buildup", "text": "When the zombie drops to 0 Hit Points, roll a d6. On a 3 or less, trigger the Unstable Reaction." },
+        { "name": "Undead Fortitude", "text": "If damage reduces the zombie to 0 Hit Points, it makes a Constitution saving throw (DC 5 + damage taken) unless the damage is Radiant, a Critical Hit, or the death is caused by Gas Buildup. On a success, the zombie drops to 1 Hit Point instead." }
+      ],
+      "actions": [
+        { "name": "Slam", "text": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) bludgeoning damage." }
+      ],
+      "reactions": [
+        { "name": "Unstable", "text": "Trigger: The zombie takes Piercing or Slashing damage. Response: Roll a d8. On an 8, the zombie explodes, destroying itself and damaging all objects nearby. Each creature in a 10-ft-radius sphere centered on the zombie must make a DC 13 Dexterity saving throw, taking 7 (2d6) poison damage on a failed save, or half as much on a success." }
+      ]
+    },
+    {
+      "name": "Heavy",
+      "stats": {
+        "size": "Medium",
+        "type": "Undead (Zombie)",
+        "alignment": "Neutral Evil",
+        "ac": "12 (natural armor)",
+        "hp": "60 (8d8 + 24)",
+        "speed": "30 ft.",
+        "challenge": "3 (700 XP; PB +2)"
+      },
+      "abilities": {
+        "STR": { "value": 17, "mod": "+3", "save": "+3" },
+        "DEX": { "value": 10, "mod": "+0", "save": "+0" },
+        "CON": { "value": 17, "mod": "+3", "save": "+3" },
+        "INT": { "value": 4, "mod": "−3", "save": "−3" },
+        "WIS": { "value": 6, "mod": "−2", "save": "−2" },
+        "CHA": { "value": 6, "mod": "−2", "save": "−2" }
+      },
+      "traits": [
+        { "name": "Gas Buildup", "text": "When the zombie drops to 0 Hit Points, roll 1d6. On a 4 or higher, trigger the Unstable reaction explosion." },
+        { "name": "Undead Fortitude", "text": "If damage reduces the zombie to 0 Hit Points, it makes a Constitution saving throw (DC 5 + damage taken) unless the damage is Radiant or a Critical Hit, or unless it explodes because of Gas Buildup. On a success, the zombie drops to 1 HP instead." }
+      ],
+      "actions": [
+        { "name": "Slam", "text": "Melee Weapon Attack: +5 to hit, reach 5 ft. Hit: 10 (2d6 + 3) bludgeoning damage. This attack deals 17 (4d6 + 3) bludgeoning damage if used after Charge." }
+      ],
+      "bonusActions": [
+        { "name": "Charge", "text": "The zombie moves up to half its Speed straight toward an enemy it can see. After moving this way, roll 1d6. On a 4 or higher, trigger the Unstable reaction explosion." }
+      ],
+      "reactions": [
+        { "name": "Unstable", "text": "Trigger: The zombie takes Piercing or Slashing damage. Response: Roll 1d6. On a 6, it explodes, destroying itself and damaging everything nearby. Dexterity Saving Throw: DC 13, each creature in a 15-ft-radius sphere. Failure: 14 (4d6) poison damage. Success: half." }
+      ]
+    },
+    {
+      "name": "Juggernaut",
+      "stats": {
+        "size": "Large",
+        "type": "Undead (Zombie)",
+        "alignment": "Neutral Evil",
+        "ac": "15 (natural armor)",
+        "hp": "110 (13d10 + 39)",
+        "speed": "30 ft.",
+        "challenge": "5 (1,800 XP; PB +3)"
+      },
+      "abilities": {
+        "STR": { "value": 18, "mod": "+4", "save": "+4" },
+        "DEX": { "value": 10, "mod": "+0", "save": "+0" },
+        "CON": { "value": 17, "mod": "+3", "save": "+3" },
+        "INT": { "value": 4, "mod": "−3", "save": "−3" },
+        "WIS": { "value": 6, "mod": "−2", "save": "−2" },
+        "CHA": { "value": 6, "mod": "−2", "save": "−2" }
+      },
+      "traits": [
+        { "name": "Gas Buildup", "text": "When the zombie drops to 0 Hit Points, roll 1d6. On a 4 or higher, trigger the Unstable reaction explosion." },
+        { "name": "Undead Fortitude", "text": "If damage reduces it to 0 HP, make a Constitution saving throw (DC 5 + damage) unless Radiant, Critical Hit, or explosion. On a success, it drops to 1 HP instead." },
+        { "name": "Siege Monster", "text": "Deals double damage to objects and structures." },
+        { "name": "Turn Resistance", "text": "Has advantage on saving throws against any effect that turns undead." }
+      ],
+      "actions": [
+        { "name": "Multiattack", "text": "The zombie makes two Slam attacks." },
+        { "name": "Slam", "text": "Melee Weapon Attack: +7 to hit, reach 5 ft. Hit: 11 (2d6 + 4) bludgeoning damage, or 18 (4d6 + 4) if used after Charge." }
+      ],
+      "bonusActions": [
+        { "name": "Charge", "text": "Moves up to half its Speed straight toward an enemy it can see. After moving this way, roll 1d6. On a 6, trigger the Unstable reaction explosion." }
+      ],
+      "reactions": [
+        { "name": "Unstable", "text": "Trigger: Takes Piercing or Slashing damage. Response: Roll 1d6. On a 6, explodes, destroying itself and damaging everything nearby. Dexterity Saving Throw: DC 14, 15-ft-radius sphere. Failure: 21 (6d6) poison damage. Success: half." }
+      ]
+    },
+    {
+      "name": "Volatile",
+      "stats": {
+        "size": "Huge",
+        "type": "Undead (Zombie)",
+        "alignment": "Neutral Evil",
+        "ac": "12 (natural armor)",
+        "hp": "46 (4d12 + 20)",
+        "speed": "0 ft.",
+        "challenge": "7 (2,900 XP; PB +3)"
+      },
+      "abilities": {
+        "STR": { "value": 20, "mod": "+5", "save": "+8" },
+        "DEX": { "value": 0, "mod": "−5", "save": "−5" },
+        "CON": { "value": 20, "mod": "+5", "save": "+8" },
+        "INT": { "value": 4, "mod": "−3", "save": "−3" },
+        "WIS": { "value": 6, "mod": "−2", "save": "−2" },
+        "CHA": { "value": 6, "mod": "−2", "save": "−2" }
+      },
+      "traits": [
+        { "name": "Gas Buildup", "text": "When the zombie drops to 0 Hit Points, trigger the Dangerously Unstable reaction explosion." },
+        { "name": "Siege Monster", "text": "Deals double damage to objects and structures." },
+        { "name": "Turn Resistance", "text": "Has advantage on saving throws against effects that turn undead." }
+      ],
+      "actions": [
+        { "name": "Grab", "text": "Dexterity Saving Throw DC 14, one Large or smaller creature within 5 ft. Failure: the target is Grappled (escape DC 22) and Restrained until the grapple ends." },
+        { "name": "Bite", "text": "Melee Weapon Attack: +8 to hit, reach 5 ft. Hit: 10 (1d6 + 5) piercing plus 7 (2d6) necrotic damage." }
+      ],
+      "reactions": [
+        { "name": "Dangerously Unstable", "text": "Trigger: Takes Piercing or Slashing damage. Response: Roll 1d6. On a 2 or higher, explodes, destroying itself and damaging everything nearby. Dexterity Saving Throw: DC 20, 40-ft-radius sphere. Failure: 54 (12d8) poison damage and knocked prone. Success: half. Each creature within 80 ft. also takes 11 (3d6) thunder damage and is Deafened for 1 minute." }
+      ]
+    },
+    {
+      "name": "Vile",
+      "stats": {
+        "size": "Large",
+        "type": "Undead (Zombie)",
+        "alignment": "Neutral Evil",
+        "ac": "15 (natural armor)",
+        "hp": "207 (18d10 + 108)",
+        "speed": "40 ft.",
+        "challenge": "11 (7,200 XP; PB +4)"
+      },
+      "abilities": {
+        "STR": { "value": 25, "mod": "+7", "save": "+11" },
+        "DEX": { "value": 10, "mod": "+0", "save": "+0" },
+        "CON": { "value": 23, "mod": "+6", "save": "+10" },
+        "INT": { "value": 4, "mod": "−3", "save": "−3" },
+        "WIS": { "value": 6, "mod": "−2", "save": "−2" },
+        "CHA": { "value": 6, "mod": "−2", "save": "−2" }
+      },
+      "traits": [
+        { "name": "Gas Buildup", "text": "When the zombie drops to 0 Hit Points, roll 1d6. On a 3 or higher, trigger the Unstable reaction explosion." },
+        { "name": "Undead Fortitude", "text": "If damage reduces it to 0 HP, make a Constitution saving throw (DC 5 + damage) unless Radiant, Critical Hit, or explosion. On success, it drops to 1 HP instead." },
+        { "name": "Siege Monster", "text": "Deals double damage to objects and structures." },
+        { "name": "Turn Resistance", "text": "Has advantage on saving throws against any effect that turns undead." }
+      ],
+      "actions": [
+        { "name": "Multiattack", "text": "Makes two Empowered Slam attacks and uses Acid Vomit if available." },
+        { "name": "Empowered Slam", "text": "Melee Weapon Attack: +11 to hit, reach 5 ft. Hit: 10 (1d6 + 7) bludgeoning plus 7 (2d6) necrotic damage." },
+        { "name": "Acid Vomit (Recharge 5–6)", "text": "Dexterity Saving Throw DC 18, each creature in a 30-ft cone. Failure: 31 (7d8) acid damage; Success: half. All affected are covered in acid vomit, cannot regain HP, and take 5 (1d10) acid damage at the start of their turn until cleaned." }
+      ],
+      "reactions": [
+        { "name": "Unstable", "text": "Trigger: Takes Piercing or Slashing damage. Response: Roll 1d6. On a 5 or higher, explodes, destroying itself and damaging all nearby objects. Dexterity Saving Throw: DC 18, 30-ft-radius sphere. Failure: 36 (8d8) poison damage; Success: half." }
+      ]
+    }
+  ],
+
+  "overview": {
+    "intro": "During decomposition, gases and fluids accumulate inside the corpse, causing the body to swell and produce foul odors. This unstable state makes the creature dangerously volatile, ready to explode with any strong impact.",
+    "features": [
+      "Necromantic Reanimation — A Bloated is created through necromancy or wild magic surges.",
+      "Mindless — Moves directly toward foes, ignoring obstacles and danger. Without orders, it attacks any living being or stands idle.",
+      "Rotting Appearance — Its body reflects its original cause of death (sun-scorched, maggot-ridden, waterlogged, etc.).",
+      "Undead Nature — Does not require air, food, drink, or sleep."
+    ]
+  },
+
+  "weakSpots": [
+    "Head (CA +5). On a hit, the attack becomes a critical hit.",
+    "Mechanical Stress. When the Bloated suffers more than half of its maximum Hit Points in one hit, its body ruptures without exploding. Choose one effect:",
+    "Head — The head pops off, venting gases violently but without triggering the explosion. The creature loses all senses but keeps attacking blindly, dying in 2 turns without activating Unstable.",
+    "Arms — The arms are torn off, spilling fluids. The creature has disadvantage on attacks and cannot perform actions requiring arms.",
+    "Leg — One leg is torn off, making the creature fall prone. Its speed becomes 5 ft. and it cannot stand up."
+  ],
+
+  "affixes": [
+    "Élite — +5×PB bonus to HP, +2×PB to AC, +1×PB to attack rolls.",
+    "Sturdy Head — Attacks targeting the Head weak spot suffer −10 penalty. If the attack misses, the Bloated can make an opportunity attack as a reaction.",
+    "Frenzy — Gains Multiattack (two Slam attacks). If it already has Multiattack, it makes three Slam attacks instead.",
+    "Highly Unstable — The Unstable saving throw DC increases by 6."
+  ],
+
+  "loot": {
+    "description": "Assign the following items as loot if the Bloated remains intact. If it explodes, its possessions may be destroyed.",
+    "table": {
+      "headers": ["d20", "Qty.", "Item"],
+      "rows": [
+        ["1–5", "—", "—"],
+        ["6–7", "1d6", "GP"],
+        ["8–9", "1", "Simple Weapon (stuck)"],
+        ["10–11", "1", "Martial Weapon (stuck)"],
+        ["12–13", "1", "Leather Armor"],
+        ["14–15", "1d4", "Potion of Healing, common"],
+        ["16–17", "1d4", "Assassin’s Blood (poison)"],
+        ["18", "2d6", "Bones"],
+        ["19", "1", "Skull"],
+        ["20", "1", "Simple Weapon +1 (stuck)"]
+      ]
+    },
+    "bonus": {
+      "description": "When using one or more Affixes on CR 3+ Bloateds, assign the following items as bonus loot.",
+      "table": {
+        "headers": ["d20", "Qty.", "Item"],
+        "rows": [
+          ["1–5", "—", "—"],
+          ["6–7", "1d6", "GP"],
+          ["8–9", "1", "Simple Weapon (stuck)"],
+          ["10–11", "1", "Martial Weapon (stuck)"]
+        ]
+      }
+    }
+  },
+
+  "tags": ["Undead", "Zombie", "Explosive", "Necromancy"],
+  "author": "Cruor Games",
+  "date": "2025-11-09"
+}

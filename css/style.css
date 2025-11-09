@@ -711,3 +711,19 @@ footer {
   padding: 1rem;
   border-top: 1px solid var(--bordeaux);
 }
+
+/* Page Transition */
+#page-transition {
+  position: fixed;
+  inset: 0;
+  background: var(--black, #000);
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* fade-in all’apertura */
+#page-transition.visible {
+  opacity: 1;
+}

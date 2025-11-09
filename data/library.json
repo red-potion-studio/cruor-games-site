@@ -60,37 +60,254 @@
       "id": "druid",
       "title": "The Druid",
       "category": "frightful-stories",
+      "date": "2025-10-20",
       "excerpt": "The druid laid languidly in bed as a crowd of friends and family gathered around him...",
       "image": "assets/images/library/druid.webp",
       "tags": ["Horror", "Investigation", "Nature"],
-      "premium": false
+      "premium": false,
+      "isNew": true
     },
     {
       "id": "necromancer",
       "title": "The Necromancer",
       "category": "frightful-stories",
+      "date": "2025-10-20",
       "excerpt": "",
       "image": "assets/images/library/necromancer.webp",
       "tags": ["Horror", "Investigation", "Undead"],
-      "premium": false
+      "premium": false,
+      "isNew": true
     },
     {
       "id": "fort-darlain",
       "title": "Fort Darlain",
       "category": "frightful-stories",
+      "date": "2025-10-20",
       "excerpt": "",
       "image": "assets/images/library/fort-darlain.webp",
       "tags": ["Murder", "Investigation", "Demon"],
-      "premium": false
+      "premium": false,
+      "isNew": false
     },
     {
       "id": "tower-of-silence",
       "title": "The Tower of Silence",
       "category": "dark-places",
+      "date": "2025-10-20",
       "excerpt": "",
       "image": "assets/images/library/tower-of-silence.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
-      "premium": false
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "ossuary",
+      "title": "The Ossuary",
+      "category": "dark-places",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/ossuary.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "crimson-guardian",
+      "title": "Crimson Guardian",
+      "category": "dangerous-hazards",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/crimson-guardian.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "mortuary-totem",
+      "title": "Mortuary Totem",
+      "category": "dangerous-hazards",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/mortuary-totem.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "mist",
+      "title": "The Mist",
+      "category": "dangerous-hazards",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/mist.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "dark-weapon-masteries",
+      "title": "Dark Weapon Masteries",
+      "category": "gruesome-features",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/dark-masteries.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "endocannibal",
+      "title": "Endocannibal",
+      "category": "gruesome-features",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/endocannibal.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "mutant",
+      "title": "Mutant",
+      "category": "gruesome-features",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/mutant.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "crucifixion",
+      "title": "Crucifixion",
+      "category": "horrifying-spells",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/crucifixion.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "impalement",
+      "title": "Impalement",
+      "category": "horrifying-spells",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/impalement.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "dark-magic-surges",
+      "title": "Dark Magic Surges",
+      "category": "horrifying-spells",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/dark-magic-surges.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "diabolic-tutor",
+      "title": "Diabolic Tutor",
+      "category": "malicious-items",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/diabolic-tutor.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "tomes-of-damnation",
+      "title": "Tomes of Damnation",
+      "category": "malicious-items",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/tomes-of-damnation.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "wax-mask",
+      "title": "Wax Mask",
+      "category": "malicious-items",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/wax-mask.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "zombie-bloated",
+      "title": "Bloated Zombie",
+      "category": "terrifying-monsters",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/bloated.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "broodmother",
+      "title": "The Broodmother",
+      "category": "terrifying-monsters",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/broodmother.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "ravenous-spirit",
+      "title": "Ravenous Spirit",
+      "category": "terrifying-monsters",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/ravenous-spirit.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "emasculator",
+      "title": "The Emasculator",
+      "category": "twisted-characters",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/emasculator.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "orpheus",
+      "title": "Orpheus",
+      "category": "twisted-characters",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/orpheus.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
+    },
+    {
+      "id": "otto-and-johanna",
+      "title": "Otto & Johanna",
+      "category": "twisted-characters",
+      "date": "2025-10-20",
+      "excerpt": "",
+      "image": "assets/images/library/otto-and-johanna.webp",
+      "tags": ["Ritual", "Investigation", "Undead"],
+      "premium": false,
+      "isNew": false
     }
   ]
 }
