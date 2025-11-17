@@ -37,12 +37,12 @@
   display: flex;
   justify-content: space-between;
   gap: 0.8rem;
+  max-width: 600px;
 }
 
 .ability-cell {
   flex: 1;
   background: rgba(0, 0, 0, 0.3);
-  border: 1px solid var(--bordeaux);
   border-radius: 8px;
   padding: 0.5rem 0.6rem;
 }
@@ -84,7 +84,7 @@
 /* Prima colonna: STR 13 */
 .pair {
   display: inline-flex;
-  justify-content: center;
+  justify-content: left;
   align-items: baseline;
   gap: 0.25rem;
 }
@@ -124,6 +124,9 @@
 .monster-lore p {
   margin-bottom: 0.6rem;
   line-height: 1.6;
+}
+.monster-statblock {
+  border-spacing: 10px;
 }
 
 .monster-statblock th {
