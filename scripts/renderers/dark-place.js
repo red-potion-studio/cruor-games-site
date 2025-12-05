@@ -1,17 +1,17 @@
 /* v1.2 2025-11-02T13:10:00Z */
 export function renderDarkPlace(data) {
-  const plotTable = `
-    <table class="header-table">
-      <tr><th>Biome</th><td>${data.plot.biome}</td></tr>
-      <tr><th>Type</th><td>${data.plot.type}</td></tr>
-      <tr><th>Light</th><td>${data.plot.light}</td></tr>
-      <tr><th>Size</th><td>${data.plot.size}</td></tr>
-    </table>
-    ${
-      data.plot.introduction
-        ? `<p class="plot-intro">${data.plot.introduction}</p>`
+  const baseTable = `
+  ${
+      data.base.introduction
+        ? `<p class="base-intro">${data.base.introduction}</p>`
         : ""
     }
+    <table class="header-table">
+      <tr><th>Biome</th><td>${data.base.biome}</td></tr>
+      <tr><th>Type</th><td>${data.base.type}</td></tr>
+      <tr><th>Light</th><td>${data.base.light}</td></tr>
+      <tr><th>Size</th><td>${data.base.size}</td></tr>
+    </table>
   `;
 
   const characteristicsHTML = data.characteristics
@@ -139,15 +139,15 @@ export function renderDarkPlace(data) {
       </div>
       <div class="article-header text">
         <h1>${data.title}</h1>
-        ${plotTable}
+        ${baseTable}
       </div>
     </div>
 
-    ${characteristicsHTML}
     ${areasHTML}
+    ${characteristicsHTML}
     ${curioHTML}
-    ${encountersHTML}
     ${hazardsHTML}
+    ${encountersHTML}
     ${treasuresHTML}
 
     <div class="tags">${

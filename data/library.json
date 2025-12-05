@@ -65,7 +65,8 @@
       "image": "assets/images/library/druid.webp",
       "tags": ["Horror", "Investigation", "Nature"],
       "premium": false,
-      "isNew": true
+      "isNew": true,
+      "listCategory": "Plot"
     },
     {
       "id": "necromancer",
@@ -76,7 +77,8 @@
       "image": "assets/images/library/necromancer.webp",
       "tags": ["Horror", "Investigation", "Undead"],
       "premium": false,
-      "isNew": true
+      "isNew": true,
+      "listCategory": "Plot"
     },
     {
       "id": "fort-darlain",
@@ -87,7 +89,8 @@
       "image": "assets/images/library/fort-darlain.webp",
       "tags": ["Murder", "Investigation", "Demon"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Plot"
     },
     {
       "id": "tower-of-silence",
@@ -98,7 +101,8 @@
       "image": "assets/images/library/tower-of-silence.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Dungeon"
     },
     {
       "id": "ossuary",
@@ -109,7 +113,8 @@
       "image": "assets/images/library/ossuary.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Dungeon"
     },
     {
       "id": "crimson-guardian",
@@ -120,7 +125,8 @@
       "image": "assets/images/library/crimson-guardian.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Trap"
     },
     {
       "id": "mortuary-totem",
@@ -131,7 +137,8 @@
       "image": "assets/images/library/mortuary-totem.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Trap"
     },
     {
       "id": "mist",
@@ -142,7 +149,8 @@
       "image": "assets/images/library/mist.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Hazard"
     },
     {
       "id": "dark-weapon-masteries",
@@ -153,7 +161,8 @@
       "image": "assets/images/library/dark-masteries.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Item"
     },
     {
       "id": "endocannibal",
@@ -164,7 +173,8 @@
       "image": "assets/images/library/endocannibal.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Item"
     },
     {
       "id": "mutant",
@@ -175,7 +185,8 @@
       "image": "assets/images/library/mutant.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Item"
     },
     {
       "id": "crucifixion",
@@ -186,7 +197,8 @@
       "image": "assets/images/library/crucifixion.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Item"
     },
     {
       "id": "impalement",
@@ -197,7 +209,8 @@
       "image": "assets/images/library/impalement.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Item"
     },
     {
       "id": "dark-magic-surges",
@@ -208,7 +221,8 @@
       "image": "assets/images/library/dark-magic-surges.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Item"
     },
     {
       "id": "diabolic-tutor",
@@ -219,7 +233,8 @@
       "image": "assets/images/library/diabolic-tutor.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Item"
     },
     {
       "id": "tomes-of-damnation",
@@ -230,7 +245,8 @@
       "image": "assets/images/library/tomes-of-damnation.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Item"
     },
     {
       "id": "wax-mask",
@@ -241,7 +257,8 @@
       "image": "assets/images/library/wax-mask.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Item"
     },
     {
       "id": "zombie-bloated",
@@ -252,7 +269,10 @@
       "image": "assets/images/library/bloated.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Item",
+      "monsterType": "Undead",
+      "CR": "1/2"
     },
     {
       "id": "broodmother",
@@ -263,7 +283,10 @@
       "image": "assets/images/library/broodmother.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Item",
+      "monsterType": "Beast",
+      "CR": "8"
     },
     {
       "id": "ravenous-spirit",
@@ -274,7 +297,10 @@
       "image": "assets/images/library/ravenous-spirit.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Item",
+      "monsterType": "Undead",
+      "CR": "5"
     },
     {
       "id": "emasculator",
@@ -285,7 +311,8 @@
       "image": "assets/images/library/emasculator.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Item"
     },
     {
       "id": "orpheus",
@@ -296,7 +323,8 @@
       "image": "assets/images/library/orpheus.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Item"
     },
     {
       "id": "otto-and-johanna",
@@ -307,7 +335,8 @@
       "image": "assets/images/library/otto-and-johanna.webp",
       "tags": ["Ritual", "Investigation", "Undead"],
       "premium": false,
-      "isNew": false
+      "isNew": false,
+      "listCategory": "Item"
     }
   ]
 }

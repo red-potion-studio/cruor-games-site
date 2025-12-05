@@ -24,7 +24,6 @@ section.collapsible.areas {
 }
 
 .area h3 {
-  color: var(--grey);
   margin: 0 0 0.3rem 0;
 }
 
@@ -42,6 +41,13 @@ section.collapsible.areas {
 }
 
 @media (min-width: 1500px) {
+  /* Evita che elementi come h2 vadano spezzati */
+  .collapse-wrapper h2,
+  .collapse-wrapper h3,
+  .collapse-wrapper .no-split {
+    break-inside: avoid;
+  }
+
   .areas-layout {
     flex-direction: row;
     align-items: flex-start;
@@ -49,17 +55,16 @@ section.collapsible.areas {
 
   .areas-list {
     flex: 1 1 65%;
-    max-width: 900px;
+    max-width: 580px;
     position: relative;
     z-index: 2;
   }
 
   .map-container {
     flex: 0 0 55%;
-    max-width: 480px;
-    background: var(--black);
-    border: 2px solid var(--bordeaux);
-    border-radius: 10px;
+    max-width: 500px;
+    background: var(--content);
+    border: 2px solid rgba(var(--white-rgb), 0.35);
     padding: 20px;
     align-self: flex-start;
     position: sticky;

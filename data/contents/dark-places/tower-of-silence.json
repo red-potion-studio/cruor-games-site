@@ -3,7 +3,7 @@
   "title": "The Tower of Silence",
   "type": "dark-place",
   "image": "assets/images/library/tower-of-silence.webp",
-  "plot": {
+  "base": {
     "biome": "<span class='tag has-tooltip' data-tooltip-type='Tag' data-tooltip-key='biome-ruins'>Ruins</span>, <span class='tag has-tooltip' data-key='biome-any'>Any</span>",
     "type": "<span class='tag has-tooltip' data-key='type-burial'>Burial Grounds</span>",
     "light": "<span class='tag has-tooltip' data-key='light-dark'>Natural Darkness</span>",

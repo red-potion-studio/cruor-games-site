@@ -77,24 +77,52 @@ async function symbolizeSpans() {
    Keyword Highlighter + Sidebar
 --------------------------------------------------- */
 function initSidebarTools() {
-  // Crea sidebar se non esiste
+  // Pulsante per aprire la sidebar
+  if (!document.getElementById("sidebarOpener")) {
+    const opener = document.createElement("button");
+    opener.id = "sidebarOpener";
+    opener.textContent = "▶";
+    document.body.appendChild(opener);
+
+    opener.addEventListener("click", () => {
+      const sidebar = document.getElementById("sidebar");
+      if (sidebar) sidebar.classList.toggle("open");
+    });
+  }
+
+  // Sidebar (di default hidden)
   if (!document.getElementById("sidebar")) {
     const sidebar = document.createElement("aside");
     sidebar.id = "sidebar";
-    sidebar.innerHTML = `<button id="toggleHighlight" class="tool-btn">Keyword Highlighter</button>`;
+    sidebar.innerHTML = `
+      <button id="sidebarClose" class="tool-btn small">Close</button>
+      <button id="toggleHighlight" class="tool-btn">Keyword Highlighter</button>
+    `;
     document.body.appendChild(sidebar);
   }
 
+  // Solo ora catturo i pulsanti, perché sicuramente esistono
+  const closeBtn = document.getElementById("sidebarClose");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      const sidebar = document.getElementById("sidebar");
+      if (sidebar) sidebar.classList.remove("open");
+    });
+  }
+
   const btn = document.getElementById("toggleHighlight");
-  btn.addEventListener("click", async () => {
-    btn.classList.toggle("active");
-    if (btn.classList.contains("active")) {
-      await highlightKeywords("data/keywords.json");
-    } else {
-      removeHighlights();
-    }
-  });
+  if (btn) {
+    btn.addEventListener("click", async () => {
+      btn.classList.toggle("active");
+      if (btn.classList.contains("active")) {
+        await highlightKeywords("data/keywords.json");
+      } else {
+        removeHighlights();
+      }
+    });
+  }
 }
+
 
 /* --- Monster variant tabs --- */
 function initMonsterTabs() {
@@ -118,9 +146,12 @@ function initMonsterTabs() {
 /* ---------------------------------------------------
    Collapsible Sections
 --------------------------------------------------- */
+
+// Lista di ID che devono avere il layout single-column
+const singleColumnIds = ["areas", "encounters", "treasures"];
+
 function initCollapsibles() {
   document.querySelectorAll("section.collapsible").forEach((section) => {
-    // Evita di creare più wrapper
     if (section.querySelector(".collapse-wrapper")) return;
 
     const header = section.querySelector("h2");
@@ -129,6 +160,12 @@ function initCollapsibles() {
 
     const wrapper = document.createElement("div");
     wrapper.classList.add("collapse-wrapper");
+
+    // Applica single-column se l'id dell'h2 è nella lista
+    if (singleColumnIds.includes(header.id)) {
+      wrapper.classList.add("single-column");
+    }
+
     content.forEach((el) => wrapper.appendChild(el));
     section.appendChild(wrapper);
 
@@ -142,7 +179,7 @@ function initCollapsibles() {
 
       if (isCollapsed) {
         wrapper.style.maxHeight = wrapper.scrollHeight + "px";
-        wrapper.offsetHeight; // forza reflow
+        wrapper.offsetHeight;
         wrapper.style.maxHeight = "0";
         wrapper.style.opacity = "0";
       } else {

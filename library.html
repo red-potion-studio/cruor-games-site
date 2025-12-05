@@ -21,7 +21,7 @@
         <input type="text" id="search-input" placeholder="Search by name or tag...">
       </div>
 
-      <div class="sort-bar">
+      <div class="sort-bar" id="sort-bar">
         <label for="sort-select">Sort by:</label>
         <select id="sort-select">
           <option value="az">A–Z</option>
@@ -41,6 +41,15 @@
           <option value="48">48</option>
         </select>
       </div>
+
+      <div class="view-bar">
+        <span>View:</span>
+        <div class="view-toggle">
+          <button id="view-cards" data-view="cards" class="active">Cards</button>
+          <button id="view-list" data-view="list">List</button>
+        </div>
+      </div>
+
 
     </div>
 
